@@ -32,3 +32,9 @@ ul, li {
     margin: 0px;
     list-style: none;
 }
+
+/* Classes padrões */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+}

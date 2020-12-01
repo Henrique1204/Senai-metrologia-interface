@@ -1,26 +1,26 @@
 import React from "react";
-//  Importando css como um módulo.
+// Importando css como um módulo.
 import estilos from "./Header.module.css";
-//  Importando o Hook para localizar a página e componente para navegação. 
+// Importando o Hook para localizar a página e componente para navegação. 
 import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
-    //  Definindo um estado para o titulo.
+    // Definindo um estado para o titulo.
     const [titulo, setTitulo] = React.useState(null);
-    //  Definindo um estado para saber de estamos na home.
+    // Definindo um estado para saber de estamos na home.
     const [isHome, setIsHome] = React.useState(null);
-    //Buscando a localização da página.
+    // Buscando a localização da página.
     const localizacao = useLocation();
 
     React.useEffect(() =>{
-        //  Puxa a propriedade "pathname" do objeto de localização.
+        // Puxa a propriedade "pathname" do objeto de localização.
      const {pathname} = localizacao;
 
         if(localizacao.pathname === "/") {
             setTitulo("Home");
             setIsHome(true);
         }else {
-            //  Forma a url para definir o nome do sensor.
+            // Forma a url para definir o nome do sensor.
             setTitulo(pathname.replace("/", "").replace("sensor", "Sensor "));
             setIsHome(false);     
         }
@@ -31,7 +31,6 @@ const Header = () => {
             <h1>Metrologia - {titulo}</h1>
             
             {
-
                 !isHome && (
                     <nav className={estilos.navegacao}>
                         <NavLink to="/" end activeClassName={estilos.ativo}>Home</NavLink>
