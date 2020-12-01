@@ -33,6 +33,11 @@ ul, li {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 /* Classes padrões */
 .container {
     max-width: 1400px;
