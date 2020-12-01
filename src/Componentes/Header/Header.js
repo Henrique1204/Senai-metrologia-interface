@@ -27,19 +27,19 @@ const Header = () => {
     }, [localizacao]);
 
     return(
-        <header>
-            <h1>Metrologia SENAI - {titulo}</h1>
+        <header className={`${estilos.header} ${(isHome)? "" : estilos.headerExterno}`}>
+            <h1>Metrologia - {titulo}</h1>
             
             {
 
                 !isHome && (
-                    <nav>
-                        <NavLink to="/">Home</NavLink>
-                        <NavLink to="/sensorA">Sensor A</NavLink>
-                        <NavLink to="/sensorB">Sensor B</NavLink>
-                        <NavLink to="/sensorC">Sensor C</NavLink>
-                        <NavLink to="/sensorD">Sensor D</NavLink>
-                        <NavLink to="/sensorE">Sensor E</NavLink>
+                    <nav className={estilos.navegacao}>
+                        <NavLink to="/" end activeClassName={estilos.ativo}>Home</NavLink>
+                        <NavLink to="/sensorA" activeClassName={estilos.ativo}>Sensor A</NavLink>
+                        <NavLink to="/sensorB" activeClassName={estilos.ativo}>Sensor B</NavLink>
+                        <NavLink to="/sensorC" activeClassName={estilos.ativo}>Sensor C</NavLink>
+                        <NavLink to="/sensorD" activeClassName={estilos.ativo}>Sensor D</NavLink>
+                        <NavLink to="/sensorE" activeClassName={estilos.ativo}>Sensor E</NavLink>
                     </nav>
                 )
             }

@@ -1,0 +1,48 @@
+.header {
+    padding: 1.5rem 0;
+    font-family: --font-prncipal;
+    color: #f4f4f4;
+    background-color: #164673;
+
+}
+
+.header h1 {
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.header.headerExterno{
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    gap: 7rem;   
+}
+
+.headerExterno h1 {
+    grid-column: 2 / 3;
+}
+
+.headerExterno nav {
+    grid-column:  3 / 4;
+    display: flex;
+    align-items: center;
+} 
+
+.headerExterno nav a {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    background-color: rgb(244,244,244,0.2);
+    transition: backgroundColor 0.3s;
+}
+
+.headerExterno nav a + a {
+    margin-left: 1rem;
+}
+
+
+.headerExterno nav a:hover,
+.headerExterno nav a:focus,
+.headerExterno nav .ativo {
+    background-color: rgb(244,244,244,0.5);
+}
