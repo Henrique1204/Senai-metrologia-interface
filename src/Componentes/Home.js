@@ -1,9 +1,10 @@
 import React from "react";
+import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
 
 const Home = () => {
     return (
         <section className="container">
-            Home
+            <TemperaturaAtual />
         </section>
     );
 };
