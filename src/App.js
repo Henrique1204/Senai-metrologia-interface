@@ -6,6 +6,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./Componentes/Header/Header.js";
 // Import do componente Home.
 import Home from "./Componentes/Home.js";
+// Import do componente Footer.
+import Footer from "./Componentes/Footer/Footer.js";
 
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
       <Route path="/sensorE" element={<div>Sensor E</div>}/>
     </Routes>
     
+    {/* Adiciona o Footer do site. */}
+    <Footer />
     </BrowserRouter>
   );
 }
