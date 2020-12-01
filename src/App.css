@@ -1,0 +1,35 @@
+/* Font Spectral Bold 700 */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,400&family=Spectral+SC:wght@600&display=swap');
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: inherit;
+    color: inherit;
+}
+
+html {
+    --fonte-principal: 'Spectral SC', serif;
+    --fonte-secundaria: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding-top: 4rem;
+    font-family: var(--fonte-secundaria);
+    color: #333;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}

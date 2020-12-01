@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 // Import dos componentes do React Router.
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 //  import do componente Header.
