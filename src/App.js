@@ -1,12 +1,17 @@
 import React from "react";
 // Import dos componentes do React Router.
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+//  import do componente Header.
+import Header from "./Componentes/Header/Header.js";
 
 
 const App = () => {
   return (
     /*BrowserRouter é necessário para as rotas funcionarem.*/
     <BrowserRouter>
+    {/* Adiciona o Header do site. */}
+    <Header/>
+    
     {/* Routes é o componente que cria as rotas. */}
     <Routes>
       {/* Router é a rota. */}
