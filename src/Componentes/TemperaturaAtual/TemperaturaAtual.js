@@ -1,11 +1,16 @@
 import React from "react";
 // Importando contexto de dados.
 import { DadosContext } from "../../DadosContext";
+import Erro from "../Feedback/Erro/Erro";
 // Import componente CardTemperatura.
 import CardTemperatura from "./CardTemperatura/CardTemperatura";
 
 const TemperaturaAtual = () => {
     const { dados, erro, loading } = React.useContext(DadosContext);
+
+    if (erro) {
+        return <Erro erro="Erro ao buscar as temperaturas atuais." />;
+    }
 
     return (
         <section className="container">
