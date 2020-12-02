@@ -1,0 +1,33 @@
+.containerLoading {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLoading div {
+    width: 100px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: rgba(170, 170, 170, 0.8);
+    overflow: hidden;
+}
+
+.containerLoading div::before {
+    content: "";
+    width: 40px;
+    height: 6px;
+    background-color: #164673;
+    display: block;
+    animation: carregar 1.5s ease infinite;
+}
+
+@keyframes carregar {
+    0% {
+        transform: translateX(-20px);
+    } 50% {
+        transform: translateX(80px);
+    } 100% {
+        transform: translateX(-20px);
+    }
+}
