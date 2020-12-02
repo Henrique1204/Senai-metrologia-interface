@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className={estilos.footer}>
             <h1>Monitoramento de temperatura - SENAI Suiço-Brasileira</h1>
             
-            <div class={estilos.containerImg}>
+            <div className={estilos.containerImg}>
                 <img src={logoSenai} alt="Logo do senai São Paulo"/>
             </div>
         </footer>
