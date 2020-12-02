@@ -1,0 +1,51 @@
+.containerAmplitude {
+    max-width: 300px;
+    border-radius: 0.5rem;
+    background-color: #164673;
+    color: #f4f4f4;
+    overflow: hidden;
+}
+
+.titulo {
+    padding: 1rem;
+    font-size: 1.125rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.listaDados li {
+    width: 100%;
+    /* */
+    padding: 1rem 0;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* seleciona só elementos impares */
+.listaDados li:nth-child(odd) {
+    color: #222;
+    background-color: #A9D7F1;
+}
+
+.data {
+    font-weight: 700;
+    margin: 0.5rem;
+}
+
+.maxima {
+    display: flex;
+    align-items: center;
+}
+
+.maxima::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin: 0 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    display: inline-block;
+}
