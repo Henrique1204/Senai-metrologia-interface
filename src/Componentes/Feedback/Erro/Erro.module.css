@@ -1,3 +1,7 @@
+.container {
+    height: calc(100vh - 16rem);
+}
+
 .erro {
     max-width: 20rem;
     padding: 1rem;

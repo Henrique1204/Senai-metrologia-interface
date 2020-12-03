@@ -5,8 +5,8 @@ import estilos from "./Erro.module.css";
 const Erro = ({ erro }) => {
     if (erro) {
         return (
-            <div className={estilos.erro}>
-                <p>{erro}</p>
+            <div className={estilos.container} >
+                <p className={estilos.erro} >{erro}</p>
             </div>
         );
     }

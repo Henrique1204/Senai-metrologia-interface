@@ -9,7 +9,7 @@ const ChartLine = ({ dados }) => {
         new Chart(chart.current, {
             type: "line",
             data: {
-                labels: dados.label,
+                labels: dados.labels,
                 datasets: [{
                     label: dados.titulo,
                     data: dados.valores,
