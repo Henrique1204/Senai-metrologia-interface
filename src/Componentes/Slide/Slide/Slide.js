@@ -1,6 +1,7 @@
 import React from "react";
 // import do componente Grafico
 import Grafico from "../../Grafico/Grafico.js";
+import BotaoSlide from "../BotaoSlide/BotaoSlide.js";
 // Import do css como módulo.
 import estilos from "./Slide.module.css";
 
@@ -13,6 +14,10 @@ const Slide = ({ dados }) => {
                 <h1 className="titulo">{titulo}</h1>
 
                 <Grafico dados={dados} />
+
+                <div>
+                    <BotaoSlide valor={0} ativo={true} />
+                </div>
             </div>
         </section>
     );

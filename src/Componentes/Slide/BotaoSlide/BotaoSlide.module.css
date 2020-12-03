@@ -1,0 +1,17 @@
+.btn {
+    width: 40px;
+    height: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #A9D7F1;
+    display: block;
+    cursor: pointer;
+}
+
+.btn + .btn {
+    margin-left: 1rem;
+}
+
+.btn.ativo {
+    background-color: #164673;
+}
