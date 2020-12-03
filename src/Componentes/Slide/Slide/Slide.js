@@ -27,7 +27,7 @@ const Slide = ({ dados }) => {
         setGraficos(dadosGraficos);
 
         const {width} = slideRef.current.getBoundingClientRect();
-        setPosicao(-((width * 1.1) * ativo));
+        setPosicao(-((width * 1.2) * ativo));
     }, [dados, ativo]);
 
     return (

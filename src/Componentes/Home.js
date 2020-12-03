@@ -9,6 +9,7 @@ import Loading from "./Feedback/Loading/Loading";
 import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
 // Import do componente SLide.
 import Slide from "./Slide/Slide/Slide";
+import Head from "./Head";
 
 const Home = () => {
     const { dados, erro, loading } = React.useContext(DadosContext);
@@ -32,6 +33,10 @@ const Home = () => {
     if (dados) {
         return (
             <main>
+                <Head
+                     title="Home"
+                     description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
+                />
                 <TemperaturaAtual dados={dados} />
     
                 <Slide dados={dados} />
