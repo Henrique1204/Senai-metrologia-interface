@@ -8,6 +8,9 @@ import estilos from "./Slide.module.css";
 const Slide = ({ dados }) => {
     const [graficos, setGraficos] = React.useState([]);
     const [titulo, setTitulo] = React.useState("Sensor A");
+    const [ativo, setAtivo] = React.useState(0);
+    const [posicao, setPosicao] = React.useState(0);
+    const slideRef = React.useRef();
 
     React.useEffect(() => {
         function separarDados(sensor) {
@@ -29,18 +32,20 @@ const Slide = ({ dados }) => {
             <div className="container">
                 <h1 className="titulo">{titulo}</h1>
 
-                <div className={estilos.slide}>
+                <div ref={slideRef} className={estilos.slide} style={{transform: `translateX(${posicao}px)`}}>
                     {
                         graficos && graficos.map((dados, i) => (
-                            <Grafico key={i} dados={dados} />
+                            <div key={i} className={estilos.item}>
+                                <Grafico dados={dados} />
+                            </div>
                         ))
                     }
                 </div>
 
-                <nav>
+                <nav className={estilos.nav}>
                     {
                         graficos && graficos.map((d, i) => (
-                            <BotaoSlide valor={i} ativo={true} />
+                            <BotaoSlide valor={i} ativo={(ativo === i)} />
                         ))
                     }
                 </nav>
