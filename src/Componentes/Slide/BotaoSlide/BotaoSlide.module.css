@@ -6,12 +6,13 @@
     background-color: #81b5d3;
     display: block;
     cursor: pointer;
+    outline: none;
 }
 
 .btn + .btn {
     margin-left: 1rem;
 }
 
-.btn.ativo {
+.btn.ativo, .btn:hover {
     background-color: #164673;
 }

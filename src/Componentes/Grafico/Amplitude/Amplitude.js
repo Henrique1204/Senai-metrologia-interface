@@ -8,10 +8,11 @@ const Amplitude = ({ dados }) => {
     React.useEffect(() => {
         const temperaturas = dados.map((dado) => dado.temperatura);
 
-        setAmplitudes((amp) => [...amp, {
+        setAmplitudes([{
             maxima: Math.max(...temperaturas),
             minima: Math.min(...temperaturas),
         }]);
+
     }, [dados]);
 
     return (

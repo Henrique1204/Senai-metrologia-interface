@@ -7,7 +7,6 @@ import estilos from "./Slide.module.css";
 
 const Slide = ({ dados }) => {
     const [graficos, setGraficos] = React.useState([]);
-    const [titulo, setTitulo] = React.useState("Sensor A");
     const [ativo, setAtivo] = React.useState(0);
     const [posicao, setPosicao] = React.useState(0);
     const slideRef = React.useRef();
@@ -17,24 +16,28 @@ const Slide = ({ dados }) => {
             return dados.filter((dado) => dado.nome_sensor === sensor);
         }
     
-        setGraficos([
+        const dadosGraficos = [
             separarDados("A"),
             separarDados("B"),
             separarDados("C"),
             separarDados("D"),
-            separarDados("E"),
-        ]);
+            separarDados("E")
+        ]
 
-    }, [dados]);
+        setGraficos(dadosGraficos);
+
+        const {width} = slideRef.current.getBoundingClientRect();
+        setPosicao(-((width * 1.1) * ativo));
+    }, [dados, ativo]);
 
     return (
         <section className={estilos.container}>
             <div className="container animarEntrada">
-                <h1 className="titulo">{titulo}</h1>
+                <h1 className="titulo">Sensor {graficos.length && graficos[ativo][0].nome_sensor}</h1>
 
                 <div ref={slideRef} className={estilos.slide} style={{transform: `translateX(${posicao}px)`}}>
                     {
-                        graficos && graficos.map((dados, i) => (
+                        graficos.map((dados, i) => (
                             <div key={i} className={estilos.item}>
                                 <Grafico dados={dados} />
                             </div>
@@ -44,8 +47,8 @@ const Slide = ({ dados }) => {
 
                 <nav className={estilos.nav}>
                     {
-                        graficos && graficos.map((d, i) => (
-                            <BotaoSlide valor={i} ativo={(ativo === i)} />
+                        graficos.map((d, i) => (
+                            <BotaoSlide key={i} valor={i} ativo={(ativo === i)} setAtivo={setAtivo} />
                         ))
                     }
                 </nav>
