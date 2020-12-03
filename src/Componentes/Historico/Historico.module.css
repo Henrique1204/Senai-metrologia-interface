@@ -1,0 +1,26 @@
+.tabela{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #F4F4F4;
+    box-shadow: 4px 4px 8px rgba(32, 32, 32, 0.2);
+    overflow: hidden;
+}
+
+.titulos th{
+    padding: 00.5rem;
+    text-transform: uppercase;
+    color: #164673;
+}
+
+.dados td{
+    padding: 0.5rem;
+    color: inherit;
+}
+
+.dados {
+    color: #A9D7F1;
+}
+
+.dados:nth-child(odd) {
+    color: #164673;
+}
