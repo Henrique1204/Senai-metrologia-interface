@@ -12,11 +12,19 @@ const TemperaturaAtual = () => {
     const { dados, erro, loading } = React.useContext(DadosContext);
 
     if (loading) {
-        return <Loading />
+        return (
+            <section className="container">
+                <Loading />
+            </section>
+        );
     }
 
     if (erro) {
-        return <Erro erro="Erro ao buscar as temperaturas atuais." />;
+        return (
+            <section className="container">
+                <Erro erro="Erro ao buscar as temperaturas atuais." />
+            </section>
+        );
     }
 
     return (

@@ -6,11 +6,11 @@ import Grafico from "./Grafico/Grafico.js"
 
 const Home = () => {
     return (
-        <section className="container">
+        <main>
             <TemperaturaAtual />
 
             <Grafico />
-        </section>
+        </main>
     );
 };
 
