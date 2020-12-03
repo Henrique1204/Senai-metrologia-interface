@@ -23,7 +23,7 @@ const Home = () => {
 
     if (erro) {
         return (
-            <section className="container">
+            <section className="container animarEntrada">
                 <Erro erro="Erro ao buscar os dados." />
             </section>
         );

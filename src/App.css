@@ -59,3 +59,16 @@ img {
     background-color: currentColor;
     display: block;
 }
+
+.animarEntrada {
+    opacity: 0;
+    transform: translateY(-3rem);
+    animation: animarEntrada 0.4s forwards;
+}
+
+@keyframes animarEntrada {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
+}

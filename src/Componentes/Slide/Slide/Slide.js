@@ -29,7 +29,7 @@ const Slide = ({ dados }) => {
 
     return (
         <section className={estilos.container}>
-            <div className="container">
+            <div className="container animarEntrada">
                 <h1 className="titulo">{titulo}</h1>
 
                 <div ref={slideRef} className={estilos.slide} style={{transform: `translateX(${posicao}px)`}}>

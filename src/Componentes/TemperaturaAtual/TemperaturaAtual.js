@@ -4,7 +4,7 @@ import CardTemperatura from "./CardTemperatura/CardTemperatura";
 
 const TemperaturaAtual = ({ dados }) => {
     return (
-        <section className="container">
+        <section className="container animarEntrada">
             <h1 className="titulo">Temperaturas atuais</h1>
 
             <ul style={{ display: "flex", alignItems: "center" }}>
