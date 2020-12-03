@@ -26,7 +26,7 @@ const Grafico = ({ dados }) => {
     }, [dados]);
 
     return (
-        <div className={`${estilos.container} container`}>
+        <div className={estilos.container}>
             <div className={`${estilos.umidade} ${estilos.card}`}>
                 <ChartLine dados={graficoUmi} />
             </div>

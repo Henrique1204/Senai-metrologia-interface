@@ -5,10 +5,10 @@ import { DadosContext } from "../DadosContext";
 import Erro from "./Feedback/Erro/Erro";
 // Importando componente de Loading.
 import Loading from "./Feedback/Loading/Loading";
-// import do componente TemperaturaAtual
+// import do componente TemperaturaAtual.
 import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
-// import do componente Grafico
-import Grafico from "./Grafico/Grafico.js";
+// Import do componente SLide.
+import Slide from "./Slide/Slide/Slide";
 
 const Home = () => {
     const { dados, erro, loading } = React.useContext(DadosContext);
@@ -34,7 +34,7 @@ const Home = () => {
             <main>
                 <TemperaturaAtual dados={dados} />
     
-                <Grafico dados={dados} />
+                <Slide dados={dados} />
             </main>
         );
     }

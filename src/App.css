@@ -41,7 +41,8 @@ img {
 /* Classes padrões */
 .container {
     max-width: 1400px;
-    margin: 2rem auto;
+    padding: 2rem 0;
+    margin: 0 auto;
 }
 
 .titulo {

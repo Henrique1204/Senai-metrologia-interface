@@ -14,7 +14,7 @@ const ChartLine = ({ dados }) => {
                     label: dados.titulo,
                     data: dados.valores,
                     backgroundColor: "#164673",
-                    borderColor: "rgba(0, 0, 0, 0.5)"
+                    borderColor: "#F4F4F4"
                 }]
             },
             options: {
