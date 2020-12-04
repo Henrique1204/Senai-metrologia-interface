@@ -41,4 +41,28 @@
     color: #F4F4F4;
     background-color: #164673;
     display: block;
+    transition: backgroundColor 0.3s ease;
+}
+
+.link:hover, .link:focus {
+    background-color: #A9D7F1;
+}
+
+@media (max-width: 50rem) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 0.5rem;
+    }
+
+    .umidade {
+        grid-column: auto;
+    }
+    
+    .temperatura {
+        grid-column: auto;
+        grid-row: 2;
+    }
 }

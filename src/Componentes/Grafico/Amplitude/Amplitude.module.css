@@ -1,6 +1,7 @@
 .containerAmplitude {
     max-width: 300px;
     border-radius: 0.5rem;
+    margin: 0 auto;
     background-color: #164673;
     color: #f4f4f4;
     overflow: hidden;

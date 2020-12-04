@@ -14,17 +14,13 @@
 }
 
 .header.headerExterno{
-    display: grid;
-    grid-template-columns: 1fr auto auto 1fr;
-    gap: 7rem;   
-}
-
-.headerExterno h1 {
-    grid-column: 2 / 3;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .headerExterno nav {
-    grid-column:  3 / 4;
     display: flex;
     align-items: center;
 } 
@@ -46,4 +42,10 @@
 .headerExterno nav a:focus,
 .headerExterno nav .ativo {
     background-color: rgb(244,244,244,0.5);
+}
+
+@media (max-width: 50rem) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
 }

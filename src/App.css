@@ -40,9 +40,14 @@ img {
 
 /* Classes padrões */
 .container {
-    max-width: 1400px;
-    padding: 2rem 0;
-    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 4rem;
+}
+
+@media (max-width: 50rem) {
+    .container {
+        padding: 2rem 1rem;
+    }
 }
 
 .titulo {

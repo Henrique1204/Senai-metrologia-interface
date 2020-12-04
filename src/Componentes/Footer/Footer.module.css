@@ -16,3 +16,16 @@
     width: 12rem;
     margin: 1.5rem auto 0;
 }
+
+@media (max-width: 50rem) {
+    .footer {
+        height: auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .footer h1 {
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}
