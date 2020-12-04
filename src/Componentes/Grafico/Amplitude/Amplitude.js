@@ -6,13 +6,28 @@ const Amplitude = ({ dados }) => {
     const [amplitudes, setAmplitudes] = React.useState([]);
 
     React.useEffect(() => {
-        const temperaturas = dados.map((dado) => dado.temperatura);
+        // Separa os valores únicos de data.
+        const datas = dados.reduce((ant, { data }) => {
+            const inclui = ant.includes(data);
+            if (!inclui) {
+                return [...ant, data];
+            }
 
-        setAmplitudes([{
-            maxima: Math.max(...temperaturas),
-            minima: Math.min(...temperaturas),
-        }]);
+            return [...ant];
+        }, []);
 
+        // Define as amplitudes.
+        datas.forEach((data) => {
+            const temperaturas = dados.filter((dado) => dado.data === data)
+            .map(({ temperatura }) => temperatura);
+
+            setAmplitudes((amp) => [{
+                ...amp,
+                data: data,
+                maxima: Math.max(...temperaturas),
+                minima: Math.min(...temperaturas)
+            }]);
+        });
     }, [dados]);
 
     return (
@@ -23,7 +38,7 @@ const Amplitude = ({ dados }) => {
                 {
                     amplitudes && amplitudes.map((amp, i) => (
                         <li key={i} >
-                            <span className={estilos.data}>27/11:</span>
+                            <span className={estilos.data}>{amp.data}:</span>
                             <span className={estilos.maxima}>Max - {amp.maxima} °C</span>
                             <span>Min - {amp.minima} ºC</span>
                         </li>
