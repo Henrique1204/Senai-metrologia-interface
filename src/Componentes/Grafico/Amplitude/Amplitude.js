@@ -21,12 +21,14 @@ const Amplitude = ({ dados }) => {
             const temperaturas = dados.filter((dado) => dado.data === data)
             .map(({ temperatura }) => temperatura);
 
-            setAmplitudes((amp) => [{
-                ...amp,
-                data: data,
-                maxima: Math.max(...temperaturas),
-                minima: Math.min(...temperaturas)
-            }]);
+            if (temperaturas.length >= 60) {
+                setAmplitudes((amp) => [{
+                    ...amp,
+                    data: data,
+                    maxima: Math.max(...temperaturas),
+                    minima: Math.min(...temperaturas)
+                }]);
+            }
         });
     }, [dados]);
 

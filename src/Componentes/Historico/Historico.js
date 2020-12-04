@@ -1,39 +1,52 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import estilos from "./Historico.module.css";
+import useFetch from "../../Hooks/useFetch.js";
+import { GET_DADOS } from "../../api";
+import TabelaHistorico from "./TabelaHistorico/TabelaHistorico.js";
+import Loading from "../Feedback/Loading/Loading";
+import Erro from "../Feedback/Erro/Erro";
+import Head from "../Head.js";
 
 const Historico = () => {
-    return (
-        <section className={`container ${estilos.container}`}>
-            <h1 className="titulo">Histórico</h1>
+    const { pathname } = useLocation();
+    const { dados, erro, loading, request } = useFetch();
 
-            <div className={estilos.tabela}>
-                <div className={estilos.titulos}>
-                    <span>Nome Sensor</span>
-                    <span>Temperatura</span>
-                    <span>Umidade</span>
-                    <span>Data</span>
-                    <span>Hora</span>
-                </div>
+    React.useEffect(() => {
+        const { url } = GET_DADOS(pathname.replace("/sensor", ""), 420);
 
-                <div className={estilos.dados}>
-                    <span>A</span>
-                    <span>28 ºC</span>
-                    <span>12</span>
-                    <span>03/12</span>
-                    <span>20h10</span>
-                </div>
+        request(url);
+    }, [pathname, request]);
 
-                <div className={estilos.dados}>
-                    <span>A</span>
-                    <span>28 ºC</span>
-                    <span>12</span>
-                    <span>03/12</span>
-                    <span>20h10</span>
-                </div>
-            </div>
-        </section>
-    );
+    if (loading) {
+        return (
+            <section className="container">
+                <Loading />
+            </section>
+        );
+    }
+
+    if (erro) {
+        return (
+            <section className="container animarEntrada">
+                <Erro erro="Erro ao buscar o histórico." />
+            </section>
+        );
+    }
+
+    if (dados) {
+        return (
+            <section className={`container ${estilos.container} animarEntrada`}>
+                <Head title={`Histórico ${pathname.replace("/", "")}`} />
+
+                <h1 className="titulo">Histórico</h1>
+    
+                <TabelaHistorico dados={dados} />
+            </section>
+        );
+    }
+
+    return null;
 };
 
 export default Historico;
