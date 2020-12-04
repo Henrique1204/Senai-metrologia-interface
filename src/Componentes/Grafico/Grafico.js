@@ -5,6 +5,7 @@ import Amplitude from "./Amplitude/Amplitude.js";
 import ChartLine from "../ChartJS/ChartLine.js";
 // Import do css como módulo.
 import estilos from "./Grafico.module.css";
+import { Link } from "react-router-dom";
 
 const Grafico = ({ dados }) => {
     const [graficoUmi, setGraficoUmi] = React.useState({});
@@ -31,7 +32,11 @@ const Grafico = ({ dados }) => {
                 <ChartLine dados={graficoUmi} />
             </div>
 
-            <Amplitude dados={dados} />
+            <div>
+                <Amplitude dados={dados} />
+
+                <Link to={`sensor${dados[0].nome_sensor}`} className={estilos.link} >Ver Histórico</Link>
+            </div>
 
             <div className={`${estilos.temperatura} ${estilos.card}`}>
                 <ChartLine dados={graficoTemp} />

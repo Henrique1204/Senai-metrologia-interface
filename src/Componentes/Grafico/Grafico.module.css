@@ -27,3 +27,18 @@
 .temperatura {
     grid-column: 1 / -1;
 }
+
+.link {
+    max-width: 12rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 2rem auto 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    color: #F4F4F4;
+    background-color: #164673;
+    display: block;
+}
