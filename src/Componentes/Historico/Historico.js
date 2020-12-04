@@ -1,26 +1,37 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import estilos from "./Historico.module.css";
+
 const Historico = () => {
     return (
-        <section className="container">
-            <table className={estilos.tabela}>
+        <section className={`container ${estilos.container}`}>
+            <h1 className="titulo">Histórico</h1>
 
-                <tr className={estilos.titulos}>
-                    <th>Nome Sensor</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                    <th>Data</th>
-                    <th>Hora</th>
-                </tr>
+            <div className={estilos.tabela}>
+                <div className={estilos.titulos}>
+                    <span>Nome Sensor</span>
+                    <span>Temperatura</span>
+                    <span>Umidade</span>
+                    <span>Data</span>
+                    <span>Hora</span>
+                </div>
 
-                <tr className={estilos.dados}>
-                    <td>A</td>
-                    <td>28 ºC</td>
-                    <td>12</td>
-                    <td>03/12</td>
-                    <td>16h40</td>
-                </tr>
-            </table>
+                <div className={estilos.dados}>
+                    <span>A</span>
+                    <span>28 ºC</span>
+                    <span>12</span>
+                    <span>03/12</span>
+                    <span>20h10</span>
+                </div>
+
+                <div className={estilos.dados}>
+                    <span>A</span>
+                    <span>28 ºC</span>
+                    <span>12</span>
+                    <span>03/12</span>
+                    <span>20h10</span>
+                </div>
+            </div>
         </section>
     );
 };

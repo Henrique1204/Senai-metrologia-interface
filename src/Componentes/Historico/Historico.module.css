@@ -1,26 +1,57 @@
-.tabela{
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1 {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.tabela {
+    max-width: 650px;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    background-color: #F4F4F4;
-    box-shadow: 4px 4px 8px rgba(32, 32, 32, 0.2);
-    overflow: hidden;
+    background-color: #FFF;
+    box-shadow: 4px 4px 10px rgba(32, 32, 32, 0.4);
 }
 
-.titulos th{
-    padding: 00.5rem;
-    text-transform: uppercase;
-    color: #164673;
+.tabela + .tabela {
+    margin-left: 2rem;
 }
 
-.dados td{
+.titulos, .dados{
+    color: #F4F4F4;
+    background-color: #164673;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.titulos span, .dados span {
+    width: 100%;
     padding: 0.5rem;
-    color: inherit;
+    border: 2px solid #222;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.dados {
-    color: #A9D7F1;
+.titulos span + span, .dados span + span {
+    border-left: none;
 }
 
-.dados:nth-child(odd) {
-    color: #164673;
+.dados span {
+    border-bottom: 2px solid #222;
+}
+
+.dados + .dados span {
+    border-top: none;
+}
+
+.dados:nth-child(even) {
+    color: #222;
+    background-color: #A9D7F1;
 }
