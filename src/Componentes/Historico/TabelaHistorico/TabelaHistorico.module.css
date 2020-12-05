@@ -1,20 +1,24 @@
 .tabela {
-    max-width: 650px;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: #FFF;
-    box-shadow: 4px 4px 10px rgba(32, 32, 32, 0.4);
+    margin: 2rem 2rem 0  0;
 }
 
-.tabela + .tabela {
-    margin-left: 2rem;
+@media (max-width: 50rem) {
+    .tabela {
+        margin: 2rem 0 0;
+    }
+}
+
+.titulo {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: #164673;
 }
 
 .titulos, .dados{
     color: #F4F4F4;
     background-color: #164673;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 120px 90px 90px;
 }
 
 .titulos span, .dados span {
@@ -39,7 +43,7 @@
     border-top: none;
 }
 
-.dados:nth-child(even) {
+.dados:nth-child(odd) {
     color: #222;
     background-color: #A9D7F1;
 }

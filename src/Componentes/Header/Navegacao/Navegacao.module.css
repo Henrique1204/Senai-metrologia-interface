@@ -18,7 +18,7 @@
 
 .nav a:hover,
 .nav a:focus,
-.ativo {
+.nav .ativo, .navMobileAtivo .ativo {
     background-color: rgb(244,244,244,0.5);
 }
 
@@ -75,7 +75,7 @@
     right: 0;
     z-index: 1;
     opacity: 0;
-    transform: translateX(10px);
+    transform: translateX(-10px);
     transition: 0.3s;
     pointer-events: none;
 }

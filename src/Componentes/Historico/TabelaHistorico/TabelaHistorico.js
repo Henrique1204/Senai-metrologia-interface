@@ -26,21 +26,18 @@ const TabelaHistorico = ({ dados }) => {
             {
                 tabelas.map((tabela, i) => (
                     <div key={`Tabela${i + 1}`} className={estilos.tabela}>
+                        <h2 className={estilos.titulo}>Dados do dia: {tabela[0].data}</h2>
                         <div className={estilos.titulos}>
-                            <span>Nome Sensor</span>
                             <span>Temperatura</span>
                             <span>Umidade</span>
-                            <span>Data</span>
                             <span>Hora</span>
                         </div>
 
                         {
                             tabela.map((dados, i) => (
                                 <div key={`Dados${i + 1}`} className={estilos.dados}>
-                                    <span>{dados.nome_sensor}</span>
                                     <span>{dados.temperatura} ºC</span>
                                     <span>{dados.umidade}</span>
-                                    <span>{dados.data}</span>
                                     <span>{dados.hora}</span>
                                 </div>
                             ))

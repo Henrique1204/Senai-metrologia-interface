@@ -1,12 +1,16 @@
 .container {
-    min-height: calc(100vh - 10rem);
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: flex-start;
 }
 
 .container h1 {
     width: 100%;
-    margin-bottom: 2rem;
+}
+
+@media (max-width: 50rem) {
+    .container {
+        justify-content: center;
+    }
 }
