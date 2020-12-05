@@ -45,7 +45,7 @@
 }
 
 .link:hover, .link:focus {
-    background-color: #A9D7F1;
+    background-color: rgba(22, 70, 115, 0.8);
 }
 
 @media (max-width: 50rem) {

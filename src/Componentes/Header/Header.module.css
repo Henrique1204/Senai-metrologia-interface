@@ -3,7 +3,6 @@
     font-family: var(--fonte-principal);
     color: #f4f4f4;
     background-color: #164673;
-
 }
 
 .header h1 {
@@ -17,35 +16,17 @@
     padding-left: 4rem;
     padding-right: 4rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-.headerExterno nav {
-    display: flex;
-    align-items: center;
-} 
-
-.headerExterno nav a {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
-    background-color: rgb(244,244,244,0.2);
-    transition: backgroundColor 0.3s;
-}
-
-.headerExterno nav a + a {
-    margin-left: 1rem;
-}
-
-
-.headerExterno nav a:hover,
-.headerExterno nav a:focus,
-.headerExterno nav .ativo {
-    background-color: rgb(244,244,244,0.5);
-}
-
-@media (max-width: 50rem) {
+@media (max-width: 70rem) {
     .header h1 {
         font-size: 1.5rem;
+    }
+
+    .header.headerExterno {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }

@@ -1,0 +1,98 @@
+.nav {
+    display: flex;
+    align-items: center;
+} 
+
+.nav a {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    background-color: rgb(244,244,244,0.2);
+    transition: backgroundColor 0.3s;
+}
+
+.nav a + a {
+    margin-left: 1rem;
+}
+
+
+.nav a:hover,
+.nav a:focus,
+.ativo {
+    background-color: rgb(244,244,244,0.5);
+}
+
+.mobileButton {
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgba(97, 138, 175, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mobileButton::after {
+    content: "";
+    width: 1.2rem;
+    height: 2px;
+    border-radius: 2px;
+    background-color: currentColor;
+    box-shadow: 0 6px currentColor, 0 -6px currentColor;
+    display: block;
+    position: absolute;
+    transition: 0.2s;
+}
+
+.mobileButton:hover,
+.mobileButton:focus,
+.mobileButtonAtivo {
+    color: #164673;
+    background-color: #F4F4F4;
+    outline: none;
+}
+
+.mobileButtonAtivo::after {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    box-shadow: 0  8px currentColor, 0 -8px currentColor;
+    transform: rotate(90deg);
+}
+
+.navMobile {
+    padding: 1rem 0;
+    border-radius: 0 0 0 0.5rem;
+    background-color: #164673;
+    box-shadow: -2px 2px 4px rgba(32, 32, 32, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6rem;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.navMobileAtivo {
+    opacity: 1;
+    transform: initial;
+    transition: 0.3s;
+    pointer-events: initial;
+}
+
+.navMobile a {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.125rem;
+}
+
+.navMobile a + a {
+    margin-top: 0.5rem;
+}
+
