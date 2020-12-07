@@ -28,18 +28,18 @@ const Grafico = ({ dados }) => {
 
     return (
         <div className={estilos.container}>
+            <div className={`${estilos.temperatura} ${estilos.card}`}>
+                <ChartLine dados={graficoTemp} cor="rgba(22,70,115, 0.7)" />
+            </div>
+
             <div className={`${estilos.umidade} ${estilos.card}`}>
-                <ChartLine dados={graficoUmi} />
+            <ChartLine dados={graficoUmi} cor="rgba(169,215,241, 0.7)" />
             </div>
 
             <div>
                 <Amplitude dados={dados} />
 
                 <Link to={`sensor${dados[0].nome_sensor}`} className={estilos.link} >Ver Histórico</Link>
-            </div>
-
-            <div className={`${estilos.temperatura} ${estilos.card}`}>
-                <ChartLine dados={graficoTemp} />
             </div>
         </div>
     );

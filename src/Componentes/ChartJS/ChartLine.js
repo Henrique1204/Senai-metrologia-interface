@@ -2,19 +2,18 @@ import React from "react";
 // Import da biblioteca externa para criação de gráficos.
 import Chart from "chart.js";
 
-const ChartLine = ({ dados }) => {
+const ChartLine = ({ dados, cor }) => {
     const chart = React.useRef();
 
     React.useEffect(() => {
         new Chart(chart.current, {
-            type: "line",
+            type: "bar",
             data: {
                 labels: dados.labels,
                 datasets: [{
                     label: dados.titulo,
                     data: dados.valores,
-                    backgroundColor: "#164673",
-                    borderColor: "#F4F4F4"
+                    backgroundColor: cor,
                 }]
             },
             options: {
