@@ -9,12 +9,15 @@ const Amplitude = ({ dados }) => {
         // Separa os valores únicos de data.
         const datas = dados.reduce((ant, { data }) => {
             const inclui = ant.includes(data);
+
             if (!inclui) {
                 return [...ant, data];
             }
 
             return [...ant];
         }, []);
+    
+        setAmplitudes([]);
 
         // Define as amplitudes.
         datas.forEach((data) => {
@@ -22,12 +25,14 @@ const Amplitude = ({ dados }) => {
             .map(({ temperatura }) => temperatura);
 
             if (temperaturas.length >= 60) {
-                setAmplitudes((amp) => [{
+                setAmplitudes((amp) => [
                     ...amp,
-                    data: data,
-                    maxima: Math.max(...temperaturas),
-                    minima: Math.min(...temperaturas)
-                }]);
+                    {
+                        data: data,
+                        maxima: Math.max(...temperaturas),
+                        minima: Math.min(...temperaturas)
+                    }
+                ]);
             }
         });
     }, [dados]);

@@ -11,9 +11,9 @@ const TemperaturaAtual = ({ dados }) => {
 
             <ul className={estilos.container} >
                 {
-                    dados && dados.filter((dado, i) => i < 5).map((dado, i) => (
+                    dados && dados.filter((dado, i) => i < 5).map((dado, i, lista) => (
                         <li key={i} style={(i !== 0) ? { marginLeft: "2rem" } : {}} >
-                            <CardTemperatura dados={dado} />
+                            <CardTemperatura dados={lista[4 - i]} />
                         </li>
                     ))
                 }
