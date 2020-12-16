@@ -1,4 +1,4 @@
-const API_URL = "http://senai-metrologia.brazilsouth.cloudapp.azure.com:3001";
+const API_URL = "http://senai-metrologia.brazilsouth.cloudapp.azure.com/api/";
 
 export const GET_DADOS = ( _nome_sensor, _limite) => {
     if (_nome_sensor && _limite) {
