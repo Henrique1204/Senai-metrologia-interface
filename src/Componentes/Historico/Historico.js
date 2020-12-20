@@ -13,9 +13,9 @@ const Historico = () => {
     const { dados, erro, loading, request } = useFetch();
 
     React.useEffect(() => {
-        const { url } = GET_DADOS(pathname.replace("/sensor", ""), 420);
+        const { url, options } = GET_DADOS(pathname.replace("/sensor", ""), 420);
 
-        request(url);
+        request(url, options);
     }, [pathname, request]);
 
     if (loading) {

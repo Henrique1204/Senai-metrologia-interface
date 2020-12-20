@@ -11,9 +11,9 @@ export const DadosStorage = ({children}) => {
 
     React.useEffect(() => {
         async function buscarDados() {
-            const { url } = GET_DADOS();
+            const { url, options } = GET_DADOS();
 
-            await request(url);
+            await request(url, options);
         }
 
         buscarDados();
