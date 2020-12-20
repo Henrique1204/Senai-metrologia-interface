@@ -8,7 +8,7 @@
     border-radius: 0.5rem;
     font-size: 1.125rem;
     background-color: rgb(244,244,244,0.2);
-    transition: backgroundColor 0.3s;
+    transition: background-color 0.3s;
 }
 
 .nav a + a {

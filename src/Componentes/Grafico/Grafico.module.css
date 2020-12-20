@@ -38,7 +38,7 @@
     color: #F4F4F4;
     background-color: #164673;
     display: block;
-    transition: backgroundColor 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .link:hover, .link:focus {
