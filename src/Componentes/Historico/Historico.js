@@ -11,12 +11,60 @@ import Head from "../Head.js";
 const Historico = () => {
     const { pathname } = useLocation();
     const { dados, erro, loading, request } = useFetch();
+    const [tabelas, setTabelas] = React.useState([]);
+    const [datas, setDatas] = React.useState([]);
+    const [filtro, setFiltro] = React.useState("");
+
+    function filtrarDatas(dados) {
+        const datas =  dados.reduce((ant, { data }) => {
+            const inclui = ant.includes(data);
+            if (!inclui) {
+                return [...ant, data];
+            }
+
+            setDatas([...ant]);
+            return [...ant];
+        }, []);
+
+        return datas;
+    }
+
+    function filtrarDados(filtro, dados) {
+        let dadosFiltrados = [];
+
+        if (Array.isArray(filtro)) {
+            filtro.forEach((item) => {
+                const dado = dados.filter((dado) => dado.data === item);
+        
+                dadosFiltrados.push(dado);
+            });
+        } else {
+            const dado = dados.filter((dado) => dado.data === filtro);
+
+            dadosFiltrados.push(dado);
+        }
+
+        return dadosFiltrados;;
+    }
 
     React.useEffect(() => {
-        const { url, options } = GET_DADOS(pathname.replace("/sensor", ""), 420);
+        async function buscarDados() {
+            const { url, options } = GET_DADOS(pathname.replace("/sensor", ""), 420);
+            const { json } = await request(url, options);
 
-        request(url, options);
+            const datas = filtrarDatas(json);
+            setDatas(datas);
+            setTabelas(filtrarDados(datas, json));
+        }
+
+        buscarDados();
     }, [pathname, request]);
+
+    React.useEffect(() => {
+        if (datas.length && dados) {
+            setTabelas(filtrarDados((filtro ? filtro : datas), dados));
+        }
+    }, [filtro, datas, dados]);
 
     if (loading) {
         return (
@@ -40,8 +88,26 @@ const Historico = () => {
                 <Head title={`Histórico ${pathname.replace("/", "")}`} />
 
                 <h1 className="titulo">Histórico</h1>
-    
-                <TabelaHistorico dados={dados} />
+
+                {
+                    (datas.length !== 1) && (
+                        <div className={estilos.filtro}>
+                            <select value={filtro} onChange={({target}) => setFiltro(target.value)}>
+                                <option value="">Todas as datas</option>
+
+                                {
+                                    datas.map((data, i) => <option key={i + 1} value={data}>{data}</option>)
+                                }
+                            </select>
+                        </div>
+                    )
+                }
+
+                {
+                    tabelas.map((tabela, i) => (
+                        <TabelaHistorico key={i + 1} dados={tabela} />
+                    ))
+                }
             </section>
         );
     }

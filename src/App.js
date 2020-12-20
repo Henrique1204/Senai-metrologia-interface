@@ -21,17 +21,19 @@ const App = () => {
         {/* Adiciona o Header do site. */}
         <Header/>
         
-        {/* Routes é o componente que cria as rotas. */}
-        <Routes>
-          {/* Router é a rota. */}
-          {/* "path" é a url, "element" é o componente que irá renderizar. */}
-          <Route path="/" element={<Home />}/>
-          <Route path="/sensorA" element={<Historico />}/>
-          <Route path="/sensorB" element={<Historico />}/>
-          <Route path="/sensorC" element={<Historico />}/>
-          <Route path="/sensorD" element={<Historico />}/>
-          <Route path="/sensorE" element={<Historico />}/>
-        </Routes>
+        <main>
+          {/* Routes é o componente que cria as rotas. */}
+          <Routes>
+            {/* Router é a rota. */}
+            {/* "path" é a url, "element" é o componente que irá renderizar. */}
+            <Route path="/" element={<Home />}/>
+            <Route path="/sensorA" element={<Historico />}/>
+            <Route path="/sensorB" element={<Historico />}/>
+            <Route path="/sensorC" element={<Historico />}/>
+            <Route path="/sensorD" element={<Historico />}/>
+            <Route path="/sensorE" element={<Historico />}/>
+          </Routes>
+        </main>
         
         {/* Adiciona o Footer do site. */}
         <Footer />

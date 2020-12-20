@@ -39,6 +39,10 @@ img {
 }
 
 /* Classes padrões */
+main {
+    min-height: calc(100vh - 15rem);
+}
+
 .container {
     width: 100%;
     padding: 1rem 4rem;
