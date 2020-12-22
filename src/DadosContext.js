@@ -16,15 +16,17 @@ export const DadosStorage = ({children}) => {
 
             const { json } = await request(url, options);
 
-            const sensores = json.reduce((ant, { nome_sensor }) => {
-                if (!ant.includes(nome_sensor)) {
-                    return [...ant, nome_sensor];
-                }
-    
-                return [...ant];
-            }, []);
+            if (json) {
+                const sensores = json.reduce((ant, { nome_sensor }) => {
+                    if (!ant.includes(nome_sensor)) {
+                        return [...ant, nome_sensor];
+                    }
+        
+                    return [...ant];
+                }, []);
 
-            setSensores(sensores);
+                setSensores(sensores.sort((a, b) => ((a > b) ? 1 : ((b > a) ? -1 : 0))));
+            }
         }
 
         buscarDados();
