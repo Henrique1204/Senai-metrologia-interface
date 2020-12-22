@@ -12,7 +12,7 @@ import Slide from "./Slide/Slide/Slide";
 import Head from "./Head";
 
 const Home = () => {
-    const { dados, erro, loading } = React.useContext(DadosContext);
+    const { dados, erro, loading, sensores } = React.useContext(DadosContext);
 
     if (loading) {
         return (
@@ -37,9 +37,10 @@ const Home = () => {
                      title="Home"
                      description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
                 />
+
                 <TemperaturaAtual dados={dados} />
     
-                <Slide dados={dados} />
+                <Slide dados={dados} sensores={sensores} />
             </main>
         );
     }

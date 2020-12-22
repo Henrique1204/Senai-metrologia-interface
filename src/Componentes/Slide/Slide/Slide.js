@@ -5,7 +5,7 @@ import BotaoSlide from "../BotaoSlide/BotaoSlide.js";
 // Import do css como módulo.
 import estilos from "./Slide.module.css";
 
-const Slide = ({ dados }) => {
+const Slide = ({ dados, sensores }) => {
     const [graficos, setGraficos] = React.useState([]);
     const [ativo, setAtivo] = React.useState(0);
     const [posicao, setPosicao] = React.useState(0);
@@ -16,19 +16,13 @@ const Slide = ({ dados }) => {
             return dados.filter((dado) => dado.nome_sensor === sensor);
         }
     
-        const dadosGraficos = [
-            separarDados("A"),
-            separarDados("B"),
-            separarDados("C"),
-            separarDados("D"),
-            separarDados("E")
-        ]
+        const dadosGraficos = sensores.map((sensor) => (separarDados(sensor)));
 
         setGraficos(dadosGraficos);
 
         const {width} = slideRef.current.getBoundingClientRect();
         setPosicao(-((width * 1.2) * ativo));
-    }, [dados, ativo]);
+    }, [dados, ativo, sensores]);
 
     return (
         <section className={estilos.container}>
