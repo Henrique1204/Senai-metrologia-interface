@@ -2,7 +2,7 @@ import React from "react";
 // Import da biblioteca externa para criação de gráficos.
 import Chart from "chart.js";
 
-const ChartLine = ({ dados, cor }) => {
+const ChartLine = ({ dados, cor, min, max }) => {
     const chart = React.useRef();
 
     React.useEffect(() => {
@@ -26,7 +26,9 @@ const ChartLine = ({ dados, cor }) => {
                     yAxes: [{
                         ticks: {
                             fontSize: 16,
-                            fontColor: "#222"
+                            fontColor: "#222",
+                            min,
+                            max
                         }
                     }],
                     xAxes: [{

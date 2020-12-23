@@ -13,13 +13,13 @@ const Grafico = ({ dados }) => {
 
     React.useEffect(() => {
         setGraficoUmi({
-            titulo: "Umidade",
+            titulo: "Umidade %",
             labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 59),
             valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 59)
         });
 
         setGraficoTemp({
-            titulo: "Temperatura",
+            titulo: "Temperatura ºC",
             labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 59),
             valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 59)
         });
@@ -29,11 +29,11 @@ const Grafico = ({ dados }) => {
     return (
         <div className={estilos.container}>
             <div className={`${estilos.temperatura} ${estilos.card}`}>
-                <ChartLine dados={graficoTemp} cor="rgba(22,70,115, 0.7)" />
+                <ChartLine dados={graficoTemp} cor="rgba(22,70,115, 0.7)" min={10} max={35} />
             </div>
 
             <div className={`${estilos.umidade} ${estilos.card}`}>
-                <ChartLine dados={graficoUmi} cor="rgba(169,215,241, 0.7)" />
+                <ChartLine dados={graficoUmi} cor="rgba(169,215,241, 0.7)" min={40} max={100} />
             </div>
 
             <div>
