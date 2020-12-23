@@ -14,6 +14,14 @@
     color: #164673;
 }
 
+.tabela > div:nth-child(2) {
+    border-radius: 5px 5px 0 0;
+}
+
+.tabela > div:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
 .titulos, .dados{
     color: #F4F4F4;
     background-image: linear-gradient(90deg, #164673, #0a2549);
@@ -24,23 +32,10 @@
 .titulos span, .dados span {
     width: 100%;
     padding: 0.5rem;
-    border: 2px solid #222;
     border-bottom: none;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.titulos span + span, .dados span + span {
-    border-left: none;
-}
-
-.dados span {
-    border-bottom: 2px solid #222;
-}
-
-.dados + .dados span {
-    border-top: none;
 }
 
 .dados:nth-child(odd) {

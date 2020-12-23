@@ -17,6 +17,7 @@ body {
     margin: 0px;
     font-family: var(--fonte-secundaria);
     color: #222;
+    background-color: #F4F4F4;
 }
 
 h1, h2, h3, h4, p {
