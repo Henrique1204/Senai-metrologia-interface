@@ -16,7 +16,7 @@
 
 .titulos, .dados{
     color: #F4F4F4;
-    background-color: #164673;
+    background-image: linear-gradient(90deg, #164673, #0a2549);
     display: grid;
     grid-template-columns: 120px 90px 90px;
 }
@@ -45,5 +45,5 @@
 
 .dados:nth-child(odd) {
     color: #222;
-    background-color: #A9D7F1;
+    background-image: linear-gradient(90deg, #A9D7F1, #6a9bb8);
 }

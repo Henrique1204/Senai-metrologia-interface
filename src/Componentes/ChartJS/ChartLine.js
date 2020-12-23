@@ -41,7 +41,7 @@ const ChartLine = ({ dados, cor, min, max }) => {
             }
         });
 
-    }, [dados]);
+    }, [dados, cor, max, min]);
 
     return <canvas ref={chart} />;
 };

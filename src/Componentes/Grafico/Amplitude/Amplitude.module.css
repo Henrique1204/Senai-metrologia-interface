@@ -2,7 +2,7 @@
     max-width: 300px;
     border-radius: 0.5rem;
     margin: 0 auto;
-    background-color: #164673;
+    background-image: linear-gradient(90deg, #164673, #0a2549);
     color: #f4f4f4;
     overflow: hidden;
 }
@@ -28,7 +28,7 @@
 /* seleciona só elementos impares */
 .listaDados li:nth-child(odd) {
     color: #222;
-    background-color: #A9D7F1;
+    background-image: linear-gradient(90deg, #A9D7F1, #6a9bb8);
 }
 
 .data {
