@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/" element={<Home />}/>
             {
               sensores.map((sensor) => (
-                <Route path={`/sensor${sensor}`} element={<Historico />}/>
+                <Route path={`/sensor${sensor}`} element={<Historico />} key={sensor} />
               ))
             }
           </Routes>

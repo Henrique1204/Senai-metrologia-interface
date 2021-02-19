@@ -2,10 +2,43 @@ import React from "react";
 // import do componente amplitude.
 import Amplitude from "./Amplitude/Amplitude.js";
 // Import do componente para criação de gráficos.
-import ChartLine from "../ChartJS/ChartLine.js";
+import ChartBar from "../ChartJS/ChartBar.js";
 // Import do css como módulo.
 import estilos from "./Grafico.module.css";
 import { Link } from "react-router-dom";
+
+const yAxesTemp = [{
+    gridLines: {
+        lineWidth: 3,
+        color: [
+            'rgba(0, 0, 0, 0.1)',
+            'rgba(255, 0, 0, 0.4)',
+            'rgba(255, 119, 0, 0.4)',
+            'rgba(255, 255, 0, 0.4)',
+            'rgba(0, 255, 0, 0.4)',
+            'rgba(255, 255, 0, 0.4)',
+            'rgba(255, 119, 0, 0.4)',
+            'rgba(255, 0, 0, 0.4)',
+            'rgba(0, 0, 0, 0.1)'
+        ]
+    },
+    ticks: {
+        autoSkip: false,
+        stepSize: 2,
+        min: 12,
+        max: 28
+    }
+}]
+
+const yAxesUmi = [{
+    ticks: {
+        fontSize: 16,
+        fontColor: "#222",
+        min: 40,
+        max: 100
+    }
+}];
+
 
 const Grafico = ({ dados }) => {
     const [graficoUmi, setGraficoUmi] = React.useState({});
@@ -14,14 +47,14 @@ const Grafico = ({ dados }) => {
     React.useEffect(() => {
         setGraficoUmi({
             titulo: "Umidade %",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 59),
-            valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 59)
+            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23),
+            valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 23)
         });
 
         setGraficoTemp({
             titulo: "Temperatura ºC",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 59),
-            valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 59)
+            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23),
+            valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 23)
         });
 
     }, [dados]);
@@ -29,11 +62,11 @@ const Grafico = ({ dados }) => {
     return (
         <div className={estilos.container}>
             <div className={`${estilos.temperatura} ${estilos.card}`}>
-                <ChartLine dados={graficoTemp} cor="rgba(22,70,115, 0.7)" min={10} max={35} />
+                <ChartBar dados={graficoTemp} cor="rgba(22,70,115, 0.7)" yAxes={yAxesTemp} />
             </div>
 
             <div className={`${estilos.umidade} ${estilos.card}`}>
-                <ChartLine dados={graficoUmi} cor="rgba(169,215,241, 0.7)" min={40} max={100} />
+                <ChartBar dados={graficoUmi} cor="rgba(169,215,241, 0.7)" yAxes={yAxesUmi} />
             </div>
 
             <div>
