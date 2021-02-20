@@ -1,0 +1,65 @@
+.sessao {
+    height: 100vh;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sessao h1 {
+    text-transform: uppercase;
+}
+
+.sessao form {
+    max-width: 400px;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    background-color: #FFF;
+    box-shadow: 2px 2px 6px rgba(0, 0, 23, 0.2);
+}
+
+.sessao input {
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+}
+
+.sessao .containerInput {
+    position: relative;
+}
+
+.sessao i {
+    font-size: 1.25rem;
+    color: #444;
+    position: absolute;
+    top: 10px;
+    right: 0.5rem;
+    pointer-events: none;
+}
+
+.sessao button {
+    width: 200px;
+    padding: 0.5rem;
+    border: none;
+    margin: 0 auto;
+    font-size: 1rem;
+    border-radius: 6px;
+    color: #F4F4F4;
+    background-color: #0a2549;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.sessao button[disabled] {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.sessao button:hover, .sessao button:focus {
+    box-shadow: 2px 2px 6px rgba(44, 44, 44, 0.5);
+    transform: scale(1.1);
+}

@@ -12,21 +12,20 @@ const Header = () => {
     // Definindo um estado para saber de estamos na home.
     const [isHome, setIsHome] = React.useState(null);
     // Buscando a localização da página.
-    const localizacao = useLocation();
+    const { pathname } = useLocation();
 
     React.useEffect(() =>{
-        // Puxa a propriedade "pathname" do objeto de localização.
-        const {pathname} = localizacao;
-
-        if(localizacao.pathname === "/") {
+        if(pathname === "/") {
             setTitulo("Metrologia - Home");
             setIsHome(true);
-        }else {
+        } else {
             // Forma a url para definir o nome do sensor.
             setTitulo(pathname.replace("/", "").replace("sensor", "Sensor "));
             setIsHome(false);     
         }
-    }, [localizacao]);
+    }, [pathname]);
+
+    if (pathname === "/login") return null;
 
     return(
         <header className={`${estilos.header} ${(isHome)? "" : estilos.headerExterno}`}>

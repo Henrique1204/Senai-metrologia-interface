@@ -11,6 +11,7 @@ import Home from "./Componentes/Home.js";
 import Historico from "./Componentes/Historico/Historico.js";
 // Import do componente CadastroEmail.
 import CadastroEmail from "./Componentes/CadastroEmail/CadastroEmail.js";
+import Login from "./Componentes/Login/Login.js";
 // Import do componente Footer.
 import Footer from "./Componentes/Footer/Footer.js";
 
@@ -30,6 +31,7 @@ const App = () => {
             {/* "path" é a url, "element" é o componente que irá renderizar. */}
             <Route path="/" element={<Home />}/>
             <Route path="/cadastro" element={<CadastroEmail />}/>
+            <Route path="/login" element={<Login />}/>
             {
               sensores.map((sensor) => (
                 <Route path={`/sensor${sensor}`} element={<Historico />} key={sensor} />
