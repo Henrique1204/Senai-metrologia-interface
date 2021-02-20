@@ -10,7 +10,7 @@ import Header from "./Componentes/Header/Header.js";
 import Home from "./Componentes/Home.js";
 import Historico from "./Componentes/Historico/Historico.js";
 // Import do componente CadastroEmail.
-import CadastroEmail from "./Componentes/CadastroEmail.js";
+import CadastroEmail from "./Componentes/CadastroEmail/CadastroEmail.js";
 // Import do componente Footer.
 import Footer from "./Componentes/Footer/Footer.js";
 
