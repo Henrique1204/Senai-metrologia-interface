@@ -12,6 +12,7 @@ import Historico from "./Componentes/Historico/Historico.js";
 // Import do componente CadastroEmail.
 import CadastroEmail from "./Componentes/CadastroEmail/CadastroEmail.js";
 import Login from "./Componentes/Login/Login.js";
+import RotaNaoEncontrada from "./Componentes/RotaNaoEncontrada.js";
 // Import do componente Footer.
 import Footer from "./Componentes/Footer/Footer.js";
 
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path={`/sensor${sensor}`} element={<Historico />} key={sensor} />
               ))
             }
+            <Route path="*" element={<RotaNaoEncontrada />}/>
           </Routes>
         </main>
         

@@ -21,12 +21,14 @@ const CadastroEmail = () => {
     const [user, setUser] = React.useState(initialState.user);
     const [enviando, setEnviando] = React.useState(null);
     const [erroform, setErro] = React.useState(null);
+    const [emailEdicao, setEmailEdicao] = React.useState(null);
     const { login, setLogin } = React.useContext(DadosContext);
     const navegar = useNavigate();
 
     const limpar = () => {
         setUser(initialState.user);
         setErro(null);
+        setEmailEdicao(null);
     };
 
     const atualizarCampos = ({ target }) => setUser((user) => ({
@@ -34,7 +36,10 @@ const CadastroEmail = () => {
         [target.name]: target.value
     }));
 
-    const carregar = (user) => setUser(user);
+    const carregar = (user) => {
+        setUser(user);
+        setEmailEdicao(user.email);
+    };
 
     const buscarDados = async () => {
         const { url, options } = GET_EMAILS();
@@ -65,7 +70,7 @@ const CadastroEmail = () => {
             setErro("Por favor, preencha todos os campos!");
         } else if (!emailValido) {
             setErro("E-mail inválido! Tente novamente");
-        } else if (emailExiste && !user?.id) {
+        } else if (emailExiste && user["email"] !== emailEdicao) {
             setErro("E-mail já existente, cadastre um novo!");
         } else {
             setErro(null);
