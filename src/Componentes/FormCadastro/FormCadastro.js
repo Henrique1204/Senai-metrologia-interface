@@ -1,7 +1,7 @@
 import React from "react"
 import estilos from "./FormCadastro.module.css";
 
-const FormCadastro = ({ value, setValue, limpar, submit }) => {
+const FormCadastro = ({ value, setValue, limpar, submit, loading }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         submit();
@@ -36,7 +36,7 @@ const FormCadastro = ({ value, setValue, limpar, submit }) => {
             </div>
 
             <div className={estilos.btns}>
-                <button className={`${estilos.btn} ${estilos.salvar}`} >Salvar</button>
+                <button className={`${estilos.btn} ${estilos.salvar}`} disabled={loading}>Salvar</button>
                 <button type="button" className={`${estilos.btn} ${estilos.cancelar}`} onClick={limpar}>Cancelar</button>
             </div>
         </form>

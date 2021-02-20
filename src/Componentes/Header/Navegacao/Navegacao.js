@@ -32,7 +32,7 @@ const Navegacao = () => {
                 <NavLink to="/" end activeClassName={estilos.ativo}>Home</NavLink>
                 {
                     sensores.map((sensor) => (
-                        <NavLink to={`/sensor${sensor}`} activeClassName={estilos.ativo}>
+                        <NavLink to={`/sensor${sensor}`} activeClassName={estilos.ativo} key={sensor}>
                             Sensor {sensor}
                         </NavLink>
                     ))

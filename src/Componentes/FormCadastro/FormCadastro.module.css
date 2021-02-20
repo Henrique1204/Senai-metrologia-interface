@@ -20,6 +20,12 @@
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
+    outline: none;
+}
+
+.btn[disabled] {
+    opacity: 0.8;
+    cursor: not-allowed;
 }
 
 .btn:hover, .btn:focus {
