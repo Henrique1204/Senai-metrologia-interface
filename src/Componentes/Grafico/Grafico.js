@@ -12,10 +12,11 @@ const yAxesTemp = [{
         lineWidth: 3,
         color: [
             'rgba(0, 0, 0, 0.1)',
+            'rgba(0, 0, 0, 0.1)',
             'rgba(255, 0, 0, 0.4)',
             'rgba(255, 119, 0, 0.4)',
             'rgba(250, 220, 0, 1)',
-            'rgba(0, 255, 0, 0.4)',
+            'rgba(0, 233, 0, 0.6)',
             'rgba(250, 220, 0, 1)',
             'rgba(255, 119, 0, 0.4)',
             'rgba(255, 0, 0, 0.4)',
@@ -26,7 +27,7 @@ const yAxesTemp = [{
         autoSkip: false,
         stepSize: 2,
         min: 12,
-        max: 28
+        max: 30
     }
 }]
 
