@@ -1,10 +1,26 @@
 import React from "react"
 import estilos from "./FormCadastro.module.css";
 
-const FormCadastro = ({ value, setValue, limpar, submit, loading }) => {
+const FormCadastro = ({ value, setValue, limpar, submit, loading, lista }) => {
+    const [erro, setErro] = React.useState(null);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        submit();
+
+        const regexEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        const emailExiste = lista.map(({ email }) => email).includes(value["email"]);
+        const emailValido = regexEmail.test(value["email"]);
+
+        if (!value["nome"] && !value["email"]) {
+            setErro("Por favor, preencha todos os campos!");
+        } else if (!emailValido) {
+            setErro("E-mail inválido! Tente novamente");
+        } else if (emailExiste) {
+            setErro("E-mail já existente, cadastre um novo!");
+        } else {
+            setErro(null);
+            submit();
+        }
     }
 
     return (
@@ -34,6 +50,8 @@ const FormCadastro = ({ value, setValue, limpar, submit, loading }) => {
                     placeholder="Digite o e-mail..."
                 />
             </div>
+
+            { erro && <small className={estilos.erro}>{erro}</small> }
 
             <div className={estilos.btns}>
                 <button className={`${estilos.btn} ${estilos.salvar}`} disabled={loading}>Salvar</button>

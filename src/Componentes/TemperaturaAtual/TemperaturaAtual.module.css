@@ -1,10 +1,17 @@
 .container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
 }
 
 @media (max-width: 50rem) {
     .container {
+        flex-wrap: initial;
         overflow-x: scroll;
+    }
+
+    .container li + li {
+        margin-left: 2rem;
     }
 }

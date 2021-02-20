@@ -4,6 +4,11 @@
     gap: 20px;
 }
 
+.erro {
+    grid-column: 1 / -1;
+    color: #F44;
+}
+
 .btns {
     padding: 1rem 0;
     border-top: 1px solid rgba(0, 0, 23, 0.1);

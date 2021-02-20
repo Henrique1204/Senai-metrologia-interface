@@ -17,7 +17,7 @@ const TemperaturaAtual = ({ dados }) => {
                     dados && dados.filter((dado, i) => i < sensores.length)
                     .sort( (a, b) => ( (a.nome_sensor > b.nome_sensor) ? 1 : ((b.nome_sensor > a.nome_sensor) ? -1 : 0) ) )
                     .map((dado, i) => (
-                        <li key={i} style={(i !== 0) ? { marginLeft: "2rem" } : {}} >
+                        <li key={i} >
                             <CardTemperatura dados={dado} />
                         </li>
                     ))
