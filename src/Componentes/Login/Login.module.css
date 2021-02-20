@@ -22,11 +22,11 @@
 }
 
 .sessao input {
-    margin-bottom: 1rem;
     padding-right: 2rem;
 }
 
 .sessao .containerInput {
+    margin-bottom: 1rem;
     position: relative;
 }
 
@@ -37,6 +37,10 @@
     top: 10px;
     right: 0.5rem;
     pointer-events: none;
+}
+
+.erro {
+    color: #F44;
 }
 
 .sessao button {

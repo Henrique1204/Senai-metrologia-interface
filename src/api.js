@@ -24,7 +24,10 @@ export const GET_EMAILS = () => ({
     url: `${API_URL}/emails`,
     options: {
         method: "GET",
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            "x-access-token": window.localStorage.getItem("token")
+        }
     }
 });
 
@@ -33,7 +36,8 @@ export const POST_EMAILS = (body) => ({
     options: {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-access-token": window.localStorage.getItem("token")
         },
         body: JSON.stringify(body)
     }
@@ -44,7 +48,8 @@ export const PUT_EMAILS = (id, body) => ({
     options: {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-access-token": window.localStorage.getItem("token")
         },
         body: JSON.stringify(body)
     }
@@ -53,6 +58,20 @@ export const PUT_EMAILS = (id, body) => ({
 export const DELETE_EMAILS = (id) => ({
     url: `${API_URL}/emails/${id}`,
     options: {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+            "x-access-token": window.localStorage.getItem("token")
+        }
+    }
+});
+
+export const LOGIN = (body) => ({
+    url: `${API_URL}/login`,
+    options: {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
     }
 });

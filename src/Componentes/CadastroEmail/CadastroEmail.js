@@ -6,6 +6,8 @@ import Loading from "../Feedback/Loading/Loading.js";
 import Erro from "../Feedback/Erro/Erro.js";
 import { GET_EMAILS, POST_EMAILS, PUT_EMAILS, DELETE_EMAILS } from "../../api.js";
 import useFetch from "../../Hooks/useFetch.js";
+import { useNavigate } from "react-router-dom";
+import { DadosContext } from "../../DadosContext";
 
 const initialState = {
     user: {
@@ -19,6 +21,8 @@ const CadastroEmail = () => {
     const [user, setUser] = React.useState(initialState.user);
     const [enviando, setEnviando] = React.useState(null);
     const [erroform, setErro] = React.useState(null);
+    const { login, setLogin } = React.useContext(DadosContext);
+    const navegar = useNavigate();
 
     const limpar = () => {
         setUser(initialState.user);
@@ -35,6 +39,12 @@ const CadastroEmail = () => {
     const buscarDados = async () => {
         const { url, options } = GET_EMAILS();
         await request(url, options);
+
+        if (erro === "Falha ao autenticar o token.") {
+            window.localStorage.removeItem("token");
+            setLogin(false);
+            navegar("/login");
+        }
     }
 
     const salvar = async () => {
@@ -82,10 +92,20 @@ const CadastroEmail = () => {
         async function iniciarDados() {
             const { url, options } = GET_EMAILS();
             await request(url, options);
+
+            if (erro === "Falha ao autenticar o token.") {
+                window.localStorage.removeItem("token");
+                setLogin(false);
+                navegar("/login");
+            }
         }
 
         iniciarDados();
-    }, [request]);
+    }, [request, navegar, erro, setLogin]);
+
+    React.useEffect(() => {
+        if (!login) navegar("/login");
+    }, [login, navegar]);
 
     return (
         <section className={`${estilos.sessao} animarEntrada`}>
