@@ -18,8 +18,12 @@ const CadastroEmail = () => {
     const { dados, loading, erro, request } = useFetch();
     const [user, setUser] = React.useState(initialState.user);
     const [enviando, setEnviando] = React.useState(null);
+    const [erroform, setErro] = React.useState(null);
 
-    const limpar = () => setUser(initialState.user);
+    const limpar = () => {
+        setUser(initialState.user);
+        setErro(null);
+    };
 
     const atualizarCampos = ({ target }) => setUser((user) => ({
         ...user,
@@ -43,11 +47,25 @@ const CadastroEmail = () => {
             config = POST_EMAILS(user);
         }
 
-        await fetch(config.url, config.options);
+        const regexEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        const emailExiste = dados.map(({ email }) => email).includes(user["email"]);
+        const emailValido = regexEmail.test(user["email"]);
+
+        if (!user["nome"] && !user["email"]) {
+            setErro("Por favor, preencha todos os campos!");
+        } else if (!emailValido) {
+            setErro("E-mail inválido! Tente novamente");
+        } else if (emailExiste && !user?.id) {
+            setErro("E-mail já existente, cadastre um novo!");
+        } else {
+            setErro(null);
+            await fetch(config.url, config.options);
+
+            limpar();
+            buscarDados();
+        }
 
         setEnviando(false);
-        limpar();
-        buscarDados();
     };
 
     const remover = async (user) => {
@@ -78,7 +96,7 @@ const CadastroEmail = () => {
                     loading={enviando}
                     limpar={limpar}
                     submit={salvar}
-                    lista={dados}
+                    erro={erroform}
                 />
 
                 { loading && <Loading /> }
