@@ -66,7 +66,17 @@ export const DadosStorage = ({children}) => {
     }, []);
 
     return (
-        <DadosContext.Provider value={{ dados, erro, loading, sensores, userLogin, erroLogin, loadingLogin, login, setLogin }}>
+        <DadosContext.Provider value={{
+            dados,
+            erro,
+            loading,
+            sensores,
+            userLogin,
+            erroLogin,
+            loadingLogin,
+            login,
+            setLogin
+        }}>
             {children}
         </DadosContext.Provider>
     );

@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (usuario.validar && senha.validar) {
+        if (usuario.validar() && senha.validar()) {
             userLogin(usuario.valor, senha.valor);
         }
     };
