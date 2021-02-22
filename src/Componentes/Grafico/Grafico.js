@@ -48,14 +48,14 @@ const Grafico = ({ dados }) => {
     React.useEffect(() => {
         setGraficoUmi({
             titulo: "Umidade %",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23),
-            valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 23)
+            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23).reverse(),
+            valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 23).reverse()
         });
 
         setGraficoTemp({
             titulo: "Temperatura ºC",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23),
-            valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 23)
+            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23).reverse(),
+            valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 23).reverse()
         });
 
     }, [dados]);
