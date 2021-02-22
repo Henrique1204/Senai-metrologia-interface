@@ -42,32 +42,45 @@ const yAxesUmi = [{
 
 
 const Grafico = ({ dados }) => {
-    const [graficoUmi, setGraficoUmi] = React.useState({});
-    const [graficoTemp, setGraficoTemp] = React.useState({});
+    const [graficoUmi, setGraficoUmi] = React.useState(null);
+    const [graficoTemp, setGraficoTemp] = React.useState(null);
 
     React.useEffect(() => {
-        setGraficoUmi({
-            titulo: "Umidade %",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23).reverse(),
-            valores: dados.map((dado) => dado.umidade).filter((dado, i) => i <= 23).reverse()
-        });
+        const formatarInfos = (dados, tipo, valorPadrao, titulo, cor) => {
+            const labels = dados.map((dado) => `${dado.hora}`).filter((d, i) => i <= 23).reverse();
+            const valores = dados.map((dado) => dado[tipo]).filter((d, i) => i <= 23).reverse();
+            const cores = Array(24).fill(cor);
 
-        setGraficoTemp({
-            titulo: "Temperatura ºC",
-            labels: dados.map((dado) => `${dado.hora}`).filter((dado, i) => i <= 23).reverse(),
-            valores: dados.map((dado) => dado.temperatura).filter((dado, i) => i <= 23).reverse()
-        });
+            for(let i = 0; i < 24; i++) {
+                if (labels.length <= i) {
+                    labels.push("--.--");
+                    valores.push(valorPadrao);
+                    cores[i] = "rgba(0, 0, 0, 0.2)";
+                }
+            }
 
+            return {
+                dados: {
+                    titulo,
+                    labels,
+                    valores
+                },
+                cores
+            };
+        };
+
+        setGraficoUmi(formatarInfos(dados, "umidade", 50, "Umidade %", "rgba(169,215,241, 0.7)"));
+        setGraficoTemp(formatarInfos(dados, "temperatura", 14, "Temperatura ºC", "rgba(22,70,115, 0.7)"));
     }, [dados]);
 
     return (
         <div className={estilos.container}>
             <div className={`${estilos.temperatura} ${estilos.card}`}>
-                <ChartBar dados={graficoTemp} cor="rgba(22,70,115, 0.7)" yAxes={yAxesTemp} />
+                {graficoTemp && <ChartBar dados={graficoTemp.dados} cor={graficoTemp.cores} yAxes={yAxesTemp} />}
             </div>
 
             <div className={`${estilos.umidade} ${estilos.card}`}>
-                <ChartBar dados={graficoUmi} cor="rgba(169,215,241, 0.7)" yAxes={yAxesUmi} />
+            {graficoUmi && <ChartBar dados={graficoUmi.dados} cor={graficoUmi.cores} yAxes={yAxesUmi} />}
             </div>
 
             <div>
