@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 // Import dos componentes do React Router.
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-// Import do contexto de dados.
-import { DadosContext } from "./DadosContext.js";
 // Omport do componente Header.
 import Header from "./Componentes/Header/Header.js";
 // Import do componente Home.
@@ -15,9 +13,11 @@ import Login from "./Componentes/Login/Login.js";
 import RotaNaoEncontrada from "./Componentes/RotaNaoEncontrada.js";
 // Import do componente Footer.
 import Footer from "./Componentes/Footer/Footer.js";
+import { useSelector } from "react-redux";
+import { selecionarSensores } from "./store/dashboard";
 
 const App = () => {
-  const { sensores } = React.useContext(DadosContext);
+  const sensores = useSelector(selecionarSensores);
 
   return (
     // BrowserRouter é necessário para as rotas funcionarem.
@@ -34,7 +34,7 @@ const App = () => {
             <Route path="/cadastro" element={<CadastroEmail />}/>
             <Route path="/login" element={<Login />}/>
             {
-              sensores.map((sensor) => (
+              sensores?.map((sensor) => (
                 <Route path={`/sensor${sensor}`} element={<Historico />} key={sensor} />
               ))
             }

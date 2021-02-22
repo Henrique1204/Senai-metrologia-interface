@@ -3,12 +3,13 @@ import estilos from "./Navegacao.module.css";
 // Importando o Hook para localizar a página e componente para navegação. 
 import { NavLink } from "react-router-dom";
 import useMedia from "../../../Hooks/useMedia.js";
-import { DadosContext } from "../../../DadosContext.js";
+import { useSelector } from "react-redux";
+import { selecionarSensores } from "../../../store/dashboard";
 
 const Navegacao = () => {
     const isMobile = useMedia("(max-width: 70rem)");
     const [mobileMenu, setMobileMenu] = React.useState(false);
-    const { sensores } = React.useContext(DadosContext);
+    const sensores = useSelector(selecionarSensores);
 
     return (
         <>

@@ -1,15 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selecionarSensores } from "../../../store/dashboard.js";
 // import do componente Grafico
 import Grafico from "../../Grafico/Grafico.js";
 import BotaoSlide from "../BotaoSlide/BotaoSlide.js";
 // Import do css como módulo.
 import estilos from "./Slide.module.css";
 
-const Slide = ({ dados, sensores }) => {
+const Slide = () => {
     const [graficos, setGraficos] = React.useState([]);
     const [ativo, setAtivo] = React.useState(0);
     const [posicao, setPosicao] = React.useState(0);
     const slideRef = React.useRef();
+
+    const { dados } = useSelector((state) => state.dashboard);
+    const sensores = useSelector(selecionarSensores);
 
     React.useEffect(() => {
         function separarDados(sensor) {

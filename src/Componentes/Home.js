@@ -1,6 +1,4 @@
 import React from "react";
-// Importando contexto de dados.
-import { DadosContext } from "../DadosContext";
 // Importando componente de Erro.
 import Erro from "./Feedback/Erro/Erro";
 // Importando componente de Loading.
@@ -10,9 +8,16 @@ import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
 // Import do componente SLide.
 import Slide from "./Slide/Slide/Slide";
 import Head from "./Head";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDados } from "../store/dashboard";
 
 const Home = () => {
-    const { dados, erro, loading, sensores } = React.useContext(DadosContext);
+    const { dados, loading, erro } = useSelector((state) => state.dashboard);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(fetchDados());
+    }, [dispatch]);
 
     if (loading) {
         return (
@@ -38,9 +43,9 @@ const Home = () => {
                      description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
                 />
 
-                <TemperaturaAtual dados={dados} />
+                <TemperaturaAtual />
     
-                <Slide dados={dados} sensores={sensores} />
+                <Slide />
             </main>
         );
     }

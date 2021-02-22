@@ -3,10 +3,12 @@ import React from "react";
 import CardTemperatura from "./CardTemperatura/CardTemperatura";
 // Import do css como módulo.
 import estilos from "./TemperaturaAtual.module.css";
-import { DadosContext } from "../../DadosContext.js";
+import { useSelector } from "react-redux";
+import { selecionarSensores } from "../../store/dashboard";
 
-const TemperaturaAtual = ({ dados }) => {
-    const { sensores } = React.useContext(DadosContext);
+const TemperaturaAtual = () => {
+    const { dados } = useSelector((state) => state.dashboard);
+    const sensores = useSelector(selecionarSensores);
 
     return (
         <section className="container animarEntrada">
@@ -15,7 +17,6 @@ const TemperaturaAtual = ({ dados }) => {
             <ul className={estilos.container} >
                 {
                     dados && dados.filter((dado, i) => i < sensores.length)
-                    .sort( (a, b) => ( (a.nome_sensor > b.nome_sensor) ? 1 : ((b.nome_sensor > a.nome_sensor) ? -1 : 0) ) )
                     .map((dado, i) => (
                         <li key={i} >
                             <CardTemperatura dados={dado} />
