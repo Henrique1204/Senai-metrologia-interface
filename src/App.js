@@ -13,11 +13,17 @@ import Login from "./Componentes/Login/Login.js";
 import RotaNaoEncontrada from "./Componentes/RotaNaoEncontrada.js";
 // Import do componente Footer.
 import Footer from "./Componentes/Footer/Footer.js";
-import { useSelector } from "react-redux";
-import { selecionarSensores } from "./store/dashboard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDados, selecionarSensores } from "./store/dashboard";
 
 const App = () => {
   const sensores = useSelector(selecionarSensores);
+
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(fetchDados());
+    }, [dispatch]);
 
   return (
     // BrowserRouter é necessário para as rotas funcionarem.

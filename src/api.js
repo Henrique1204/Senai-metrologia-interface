@@ -20,47 +20,47 @@ export const GET_DADOS = ( _nome_sensor, _limite) => {
     }
 };
 
-export const GET_EMAILS = () => ({
+export const GET_EMAILS = (token) => ({
     url: `${API_URL}/emails`,
     options: {
         method: "GET",
         cache: "no-store",
         headers: {
-            "x-access-token": window.localStorage.getItem("token")
+            "x-access-token": token
         }
     }
 });
 
-export const POST_EMAILS = (body) => ({
+export const POST_EMAILS = (body, token) => ({
     url: `${API_URL}/emails`,
     options: {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "x-access-token": window.localStorage.getItem("token")
+            "x-access-token": token
         },
         body: JSON.stringify(body)
     }
 });
 
-export const PUT_EMAILS = (id, body) => ({
+export const PUT_EMAILS = (id, body, token) => ({
     url: `${API_URL}/emails/${id}`,
     options: {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            "x-access-token": window.localStorage.getItem("token")
+            "x-access-token": token
         },
         body: JSON.stringify(body)
     }
 });
 
-export const DELETE_EMAILS = (id) => ({
+export const DELETE_EMAILS = (id, token) => ({
     url: `${API_URL}/emails/${id}`,
     options: {
         method: "DELETE",
         headers: {
-            "x-access-token": window.localStorage.getItem("token")
+            "x-access-token": token
         }
     }
 });

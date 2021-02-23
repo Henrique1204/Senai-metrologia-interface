@@ -8,16 +8,10 @@ import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
 // Import do componente SLide.
 import Slide from "./Slide/Slide/Slide";
 import Head from "./Head";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDados } from "../store/dashboard";
+import { useSelector } from "react-redux";
 
 const Home = () => {
     const { dados, loading, erro } = useSelector((state) => state.dashboard);
-    const dispatch = useDispatch();
-
-    React.useEffect(() => {
-        dispatch(fetchDados());
-    }, [dispatch]);
 
     if (loading) {
         return (

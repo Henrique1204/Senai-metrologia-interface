@@ -7,7 +7,7 @@ import Erro from "../Feedback/Erro/Erro.js";
 import { GET_EMAILS, POST_EMAILS, PUT_EMAILS, DELETE_EMAILS } from "../../api.js";
 import useFetch from "../../Hooks/useFetch.js";
 import { useNavigate } from "react-router-dom";
-import { DadosContext } from "../../DadosContext";
+import { useSelector } from "react-redux";
 
 const initialState = {
     user: {
@@ -22,7 +22,8 @@ const CadastroEmail = () => {
     const [enviando, setEnviando] = React.useState(null);
     const [erroform, setErro] = React.useState(null);
     const [emailEdicao, setEmailEdicao] = React.useState(null);
-    const { login, setLogin } = React.useContext(DadosContext);
+    // Redux
+    const { login, token } = useSelector((state) => state.login);
     const navegar = useNavigate();
 
     const limpar = () => {
@@ -42,14 +43,8 @@ const CadastroEmail = () => {
     };
 
     const buscarDados = async () => {
-        const { url, options } = GET_EMAILS();
+        const { url, options } = GET_EMAILS(token);
         await request(url, options);
-
-        if (erro === "Falha ao autenticar o token.") {
-            window.localStorage.removeItem("token");
-            setLogin(false);
-            navegar("/login");
-        }
     }
 
     const salvar = async () => {
@@ -57,9 +52,9 @@ const CadastroEmail = () => {
         let config;
     
         if (user?.id) {
-            config = PUT_EMAILS(user.id, user);
+            config = PUT_EMAILS(user.id, user, token);
         } else {
-            config = POST_EMAILS(user);
+            config = POST_EMAILS(user, token);
         }
 
         const regexEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
@@ -87,7 +82,7 @@ const CadastroEmail = () => {
         const confirmacao = window.confirm("Tem certeza que deseja remover o e-mail?");
 
         if (confirmacao) {
-            const { url, options } = DELETE_EMAILS(user.id);
+            const { url, options } = DELETE_EMAILS(user.id, token);
             await fetch(url, options);
             await buscarDados();
         }
@@ -95,22 +90,17 @@ const CadastroEmail = () => {
 
     React.useEffect(() => {
         async function iniciarDados() {
-            const { url, options } = GET_EMAILS();
+            const { url, options } = GET_EMAILS(token);
             await request(url, options);
-
-            if (erro === "Falha ao autenticar o token.") {
-                window.localStorage.removeItem("token");
-                setLogin(false);
-                navegar("/login");
-            }
         }
 
-        iniciarDados();
-    }, [request, navegar, erro, setLogin]);
+        if (login) {
+            iniciarDados();
+        } else {
+            navegar("/login");
+        }
 
-    React.useEffect(() => {
-        if (!login) navegar("/login");
-    }, [login, navegar]);
+    }, [request, token, login, navegar]);
 
     return (
         <section className={`${estilos.sessao} animarEntrada`}>

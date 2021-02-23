@@ -1,20 +1,27 @@
 import React from "react";
 import estilos from "./Login.module.css";
 import useForm from "../../Hooks/useForm.js";
-import { DadosContext } from "../../DadosContext";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLogin } from "../../store/login.js";
+import { LOGIN } from "../../api";
 
 const Login = () => {
     const usuario = useForm();
     const senha = useForm();
-    const { userLogin, erroLogin, loadingLogin, login } = React.useContext(DadosContext);
     const navegar = useNavigate();
+    // Redux
+    const { login, erro, loading } = useSelector((state) => state.login);
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (usuario.validar() && senha.validar()) {
-            userLogin(usuario.valor, senha.valor);
+            dispatch(fetchLogin(LOGIN({
+                usuario: usuario.valor,
+                senha: senha.valor
+            })));
         }
     };
 
@@ -53,8 +60,8 @@ const Login = () => {
                     {senha.erro && <small className={estilos.erro}>{senha.erro}</small>}
                 </div>
 
-                <button disabled={loadingLogin}>Entrar</button>
-                {erroLogin && <small className={estilos.erro}>{erroLogin}</small>}
+                <button disabled={loading}>Entrar</button>
+                {erro && <small className={estilos.erro}>{erro}</small>}
             </form>
         </section>
     );
