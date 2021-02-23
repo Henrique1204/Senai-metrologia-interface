@@ -18,7 +18,19 @@ const Slide = () => {
 
     React.useEffect(() => {
         function separarDados(sensor) {
-            return dados.filter((dado) => dado.nome_sensor === sensor);
+            const hoje = new Date().getDate();
+
+            const dadosSensor =  dados.filter((dado) => dado.nome_sensor === sensor);
+
+            const dadosHoje = dadosSensor.filter((dado)=> {
+                
+                const dadoData = Number(dado.data.substring(0,2));
+            
+                if (dadoData === hoje) return true;
+                return false;
+            });
+
+            return dadosHoje;
         }
     
         const dadosGraficos = sensores.map((sensor) => (separarDados(sensor)));
