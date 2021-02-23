@@ -75,3 +75,14 @@ export const LOGIN = (body) => ({
         body: JSON.stringify(body)
     }
 });
+
+
+export const VALIDAR_TOKEN = (token) => ({
+    url: `${API_URL}/validarToken`,
+    options: {
+        method: "POST",
+        headers: {
+            "x-access-token": token
+        }
+    }
+});

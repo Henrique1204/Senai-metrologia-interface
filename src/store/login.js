@@ -1,5 +1,6 @@
 // Importando utilitários do redux.
 import { createSlice } from "@reduxjs/toolkit";
+import { VALIDAR_TOKEN } from "../api.js";
 
 const storageKey = "token";
 
@@ -36,7 +37,7 @@ const slice = createSlice({
 });
 
 export const {
-    tokenValidated,
+    validarToken,
     atualizarLogin,
     atualizarToken,
     atualizarLoading,
@@ -66,25 +67,25 @@ export const fetchLogin = ({ url, options }) => async (dispatch) => {
 }
 
 // export const logout = () => (dispatch) => {
-//     dispatch(tokenValidated(false));
+//     dispatch(validarToken(false));
 // }
 
-// export const validarToken = (payload) => async (dispatch) => {
-//     try {
-//         if (payload) {
-//             const { url, options } = VALIDAR_TOKEN(payload);
-//             const res = await fetch(url, options);
-//             const json = await res.json();
+export const validarTokenFetch = (payload) => async (dispatch) => {
+    try {
+        if (payload) {
+            const { url, options } = VALIDAR_TOKEN(payload);
+            const res = await fetch(url, options);
+            const json = await res.json();
 
-//             if (res.ok === false) throw new Error("Erro no fetch!");
+            if (res.ok === false) throw new Error("Erro no fetch!");
 
-//             dispatch(tokenValidated(json.valid));
-//         } else {
-//             dispatch(tokenValidated(false));
-//         }
-//     } catch (e) {
-//         dispatch(tokenValidated(false));
-//     }
-// }
+            dispatch(validarToken(json.auth));
+        } else {
+            dispatch(validarToken(false));
+        }
+    } catch (e) {
+        dispatch(validarToken(false));
+    }
+}
 
 export default slice.reducer;

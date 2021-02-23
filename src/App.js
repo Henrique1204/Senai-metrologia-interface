@@ -15,6 +15,7 @@ import RotaNaoEncontrada from "./Componentes/RotaNaoEncontrada.js";
 import Footer from "./Componentes/Footer/Footer.js";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDados, selecionarSensores } from "./store/dashboard";
+import { validarTokenFetch } from "./store/login";
 
 const App = () => {
   const sensores = useSelector(selecionarSensores);
@@ -22,7 +23,8 @@ const App = () => {
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-        dispatch(fetchDados());
+      dispatch(fetchDados());
+      dispatch(validarTokenFetch(window.localStorage.getItem("token")));
     }, [dispatch]);
 
   return (
