@@ -4,6 +4,7 @@ import FormCadastro from "../FormCadastro/FormCadastro.js";
 import TabelaEmails from "../TabelaEmails/TabelaEmails";
 import Loading from "../Feedback/Loading/Loading.js";
 import Erro from "../Feedback/Erro/Erro.js";
+import ModalAlerta from '../Feedback/ModalAlerta/ModalAlert.js';
 import { GET_EMAILS, POST_EMAILS, PUT_EMAILS, DELETE_EMAILS } from "../../api.js";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -102,6 +103,8 @@ const CadastroEmail = () => {
                 { erro && <Erro erro={erro} /> }
                 <TabelaEmails carregar={carregar} remover={remover} />
             </div>
+
+            <ModalAlerta />
         </section>
     )
 };

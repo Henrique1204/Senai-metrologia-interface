@@ -1,0 +1,72 @@
+/* Modal */
+.Modal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.Modal::before {
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.CardModal {
+  width: 100%;
+  max-width: 320px;
+  border: 3px solid #164673;
+  border-radius: 6px;
+  padding: 1.5rem 1rem 1rem;
+  margin: 0 auto;
+  background-color: #FFF;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.ModalFechar {
+  width: 40px;
+  height: 40px;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: bolder;
+  text-align: center;
+  color: #164673;
+  background-color: #FFF;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  outline: none;
+  transition: font-size 0.2s ease;
+}
+
+.ModalFechar:hover {
+  font-size: 1.5rem;
+}
+
+.CardModal i {
+  font-size: 5rem;
+  text-align: center;
+  color: #164673;
+  display: block;
+  opacity: 0.5;
+}
+
+.CardModal p {
+  font-size: 1rem;
+  text-align: center;
+  color: #444;
+}
