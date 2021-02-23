@@ -66,9 +66,9 @@ export const fetchLogin = ({ url, options }) => async (dispatch) => {
     }
 }
 
-// export const logout = () => (dispatch) => {
-//     dispatch(validarToken(false));
-// }
+export const logout = () => (dispatch) => {
+    dispatch(validarToken(false));
+}
 
 export const validarTokenFetch = (payload) => async (dispatch) => {
     try {

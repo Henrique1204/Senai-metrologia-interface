@@ -70,17 +70,23 @@ main {
     display: block;
 }
 
+@keyframes animarEntrada {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
+}
+
 .animarEntrada {
     opacity: 0;
     transform: translateY(-3rem);
     animation: animarEntrada 0.4s forwards;
 }
 
-@keyframes animarEntrada {
-    to {
-        opacity: 1;
-        transform: initial;
-    }
+.animarEsquerda {
+    opacity: 0;
+    transform: translateX(2rem);
+    animation: animarEntrada 0.5s forwards;   
 }
 
 label{

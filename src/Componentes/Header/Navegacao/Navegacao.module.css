@@ -3,22 +3,28 @@
     align-items: center;
 } 
 
-.nav a {
+.nav a, .logout {
     padding: 0.5rem;
     border-radius: 0.5rem;
+    border: none;
     font-size: 1.125rem;
     background-color: rgb(244,244,244,0.2);
     transition: background-color 0.3s;
+    cursor: pointer;
+    outline: none;
 }
 
-.nav a + a {
+.nav a + a, .logout {
     margin-left: 1rem;
 }
 
 
 .nav a:hover,
 .nav a:focus,
-.nav .ativo, .navMobileAtivo .ativo {
+.nav .ativo,
+.navMobileAtivo .ativo,
+.logout:hover,
+.logout:focus {
     background-color: rgb(244,244,244,0.5);
 }
 
@@ -63,7 +69,7 @@
 }
 
 .navMobile {
-    padding: 1rem 0;
+    padding: 0;
     border-radius: 0 0 0 0.5rem;
     background-color: #164673;
     box-shadow: -2px 2px 4px rgba(22,70,115, 0.4);
@@ -89,11 +95,20 @@
 }
 
 .navMobile a {
+    width: 100%;
     padding: 0.5rem 1.5rem;
     font-size: 1.125rem;
+    text-align: center;
 }
 
 .navMobile a + a {
     margin-top: 0.5rem;
 }
 
+.navMobile .logout {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    font-weight: bold;
+    background-color: #164673;
+}
