@@ -5,9 +5,9 @@ import TabelaEmails from "../TabelaEmails/TabelaEmails";
 import Loading from "../Feedback/Loading/Loading.js";
 import Erro from "../Feedback/Erro/Erro.js";
 import { GET_EMAILS, POST_EMAILS, PUT_EMAILS, DELETE_EMAILS } from "../../api.js";
-import useFetch from "../../Hooks/useFetch.js";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getEmails, atualizarEmails } from "../../store/emails.js";
 
 const initialState = {
     user: {
@@ -17,18 +17,18 @@ const initialState = {
 };
 
 const CadastroEmail = () => {
-    const { dados, loading, erro, request } = useFetch();
     const [user, setUser] = React.useState(initialState.user);
-    const [enviando, setEnviando] = React.useState(null);
-    const [erroform, setErro] = React.useState(null);
+    const [erroForm, setErroForm] = React.useState(null);
     const [emailEdicao, setEmailEdicao] = React.useState(null);
+    const navegar = useNavigate();
     // Redux
     const { login, token } = useSelector((state) => state.login);
-    const navegar = useNavigate();
+    const { dados, erro, loading } = useSelector((state) => state.emails);
+    const dispatch = useDispatch();
 
     const limpar = () => {
         setUser(initialState.user);
-        setErro(null);
+        setErroForm(null);
         setEmailEdicao(null);
     };
 
@@ -42,13 +42,7 @@ const CadastroEmail = () => {
         setEmailEdicao(user.email);
     };
 
-    const buscarDados = async () => {
-        const { url, options } = GET_EMAILS(token);
-        await request(url, options);
-    }
-
     const salvar = async () => {
-        setEnviando(true);
         let config;
     
         if (user?.id) {
@@ -62,45 +56,36 @@ const CadastroEmail = () => {
         const emailValido = regexEmail.test(user["email"]);
 
         if (!user["nome"] && !user["email"]) {
-            setErro("Por favor, preencha todos os campos!");
+            setErroForm("Por favor, preencha todos os campos!");
         } else if (!emailValido) {
-            setErro("E-mail inválido! Tente novamente");
+            setErroForm("E-mail inválido! Tente novamente");
         } else if (emailExiste && user["email"] !== emailEdicao) {
-            setErro("E-mail já existente, cadastre um novo!");
+            setErroForm("E-mail já existente, cadastre um novo!");
         } else {
-            setErro(null);
-            await fetch(config.url, config.options);
+            setErroForm(null);
+            await dispatch(atualizarEmails(config));
 
             limpar();
-            buscarDados();
+            await dispatch(getEmails(GET_EMAILS(token)));
         }
-
-        setEnviando(false);
     };
 
     const remover = async (user) => {
         const confirmacao = window.confirm("Tem certeza que deseja remover o e-mail?");
 
         if (confirmacao) {
-            const { url, options } = DELETE_EMAILS(user.id, token);
-            await fetch(url, options);
-            await buscarDados();
+            await dispatch(atualizarEmails(DELETE_EMAILS(user.id, token)));
+            await dispatch(getEmails(GET_EMAILS(token)));
         }
     };
 
     React.useEffect(() => {
-        async function iniciarDados() {
-            const { url, options } = GET_EMAILS(token);
-            await request(url, options);
-        }
-
         if (login) {
-            iniciarDados();
+            dispatch(getEmails(GET_EMAILS(token)));
         } else {
             navegar("/login");
         }
-
-    }, [request, token, login, navegar]);
+    }, [token, login, navegar, dispatch]);
 
     return (
         <section className={`${estilos.sessao} animarEntrada`}>
@@ -108,15 +93,14 @@ const CadastroEmail = () => {
                 <FormCadastro
                     value={user}
                     setValue={atualizarCampos}
-                    loading={enviando}
                     limpar={limpar}
                     submit={salvar}
-                    erro={erroform}
+                    erro={erroForm}
                 />
 
                 { loading && <Loading /> }
-                { erro && <Erro erro={"Erro ao buscar os e-mails."} /> }
-                { dados && <TabelaEmails lista={dados} carregar={carregar} remover={remover} /> }
+                { erro && <Erro erro={erro} /> }
+                <TabelaEmails carregar={carregar} remover={remover} />
             </div>
         </section>
     )

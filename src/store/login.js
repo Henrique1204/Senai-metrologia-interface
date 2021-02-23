@@ -51,12 +51,13 @@ export const fetchLogin = ({ url, options }) => async (dispatch) => {
         const res = await fetch(url, options);
         const json = await res.json();
 
-        if (json.auth) {
-            dispatch(atualizarToken(json.token));
-            window.localStorage.setItem(storageKey, json.token);
-            dispatch(atualizarLogin(true));
+        if (!json.auth) {
+            throw new Error(json.message);
         }
 
+        dispatch(atualizarToken(json.token));
+        window.localStorage.setItem(storageKey, json.token);
+        dispatch(atualizarLogin(true));
     } catch ({ message }) {
         dispatch(atualizarErro(message));
     } finally {

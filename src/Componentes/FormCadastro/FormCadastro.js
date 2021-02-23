@@ -1,7 +1,10 @@
 import React from "react"
+import { useSelector } from "react-redux";
 import estilos from "./FormCadastro.module.css";
 
-const FormCadastro = ({ value, setValue, limpar, submit, loading, erro }) => {
+const FormCadastro = ({ value, setValue, limpar, submit, erro }) => {
+    const { loading } = useSelector((state) => state.emails);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         submit();
