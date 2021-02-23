@@ -21,6 +21,7 @@ const CadastroEmail = () => {
     const [user, setUser] = React.useState(initialState.user);
     const [erroForm, setErroForm] = React.useState(null);
     const [emailEdicao, setEmailEdicao] = React.useState(null);
+    const [modal, setModal] = React.useState(false);
     const navegar = useNavigate();
     // Redux
     const { login, token } = useSelector((state) => state.login);
@@ -66,6 +67,8 @@ const CadastroEmail = () => {
             setErroForm(null);
             await dispatch(atualizarEmails(config));
 
+            setModal(true);
+
             limpar();
             await dispatch(getEmails(GET_EMAILS(token)));
         }
@@ -104,7 +107,7 @@ const CadastroEmail = () => {
                 <TabelaEmails carregar={carregar} remover={remover} />
             </div>
 
-            <ModalAlerta />
+            { modal && <ModalAlerta setState={setModal} /> }
         </section>
     )
 };
