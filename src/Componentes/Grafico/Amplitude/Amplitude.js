@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 // import do css como módulo
 import estilos from "./Amplitude.module.css";
 
-const Amplitude = ({ dados }) => {
+const Amplitude = () => {
     const [amplitudes, setAmplitudes] = React.useState([]);
+    const { dados } = useSelector((state) => state.dashboard);
 
     React.useEffect(() => {
         // Separa os valores únicos de data.

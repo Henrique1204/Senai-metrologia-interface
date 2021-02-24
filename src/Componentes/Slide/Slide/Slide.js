@@ -44,13 +44,13 @@ const Slide = () => {
     return (
         <section className={estilos.container}>
             <div className="container animarEntrada">
-                <h1 className="titulo">Sensor {graficos.length && graficos[ativo][0].nome_sensor}</h1>
+                <h1 className="titulo">Sensor {sensores.length === 0 && sensores[ativo]}</h1>
 
                 <div ref={slideRef} className={estilos.slide} style={{transform: `translateX(${posicao}px)`}}>
                     {
                         graficos.map((dados, i) => (
                             <div key={i} className={estilos.item}>
-                                <Grafico dados={dados} />
+                                <Grafico dados={dados} sensor={sensores[ativo]} />
                             </div>
                         ))
                     }

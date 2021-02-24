@@ -7,8 +7,15 @@ import { useSelector } from "react-redux";
 import { selecionarSensores } from "../../store/dashboard";
 
 const TemperaturaAtual = () => {
+    const [dadosCard, setDadosCard] = React.useState(null);
     const { dados } = useSelector((state) => state.dashboard);
     const sensores = useSelector(selecionarSensores);
+
+    React.useEffect(() => {
+        setDadosCard(
+            sensores.map((sensor) => dados.find((dado) => dado.nome_sensor === sensor))
+        );
+    }, [dados, sensores]);
 
     return (
         <section className="container animarEntrada">
@@ -16,9 +23,8 @@ const TemperaturaAtual = () => {
 
             <ul className={estilos.container} >
                 {
-                    dados && dados.filter((dado, i) => i < sensores.length)
-                    .map((dado, i) => (
-                        <li key={i} >
+                    dadosCard && dadosCard.map((dado) => (
+                        <li key={dado.nome_sensor} >
                             <CardTemperatura dados={dado} />
                         </li>
                     ))

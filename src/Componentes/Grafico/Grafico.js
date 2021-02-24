@@ -41,7 +41,7 @@ const yAxesUmi = [{
 }];
 
 
-const Grafico = ({ dados }) => {
+const Grafico = ({ dados, sensor }) => {
     const [graficoUmi, setGraficoUmi] = React.useState(null);
     const [graficoTemp, setGraficoTemp] = React.useState(null);
 
@@ -84,9 +84,9 @@ const Grafico = ({ dados }) => {
             </div>
 
             <div>
-                <Amplitude dados={dados} />
+                <Amplitude />
 
-                <Link to={`sensor${dados[0].nome_sensor}`} className={estilos.link} >Ver Histórico</Link>
+                <Link to={`sensor${sensor}`} className={estilos.link} >Ver Histórico</Link>
             </div>
         </div>
     );
