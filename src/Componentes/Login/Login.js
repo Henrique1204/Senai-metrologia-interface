@@ -1,7 +1,7 @@
 import React from "react";
 import estilos from "./Login.module.css";
 import useForm from "../../Hooks/useForm.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogin } from "../../store/login.js";
 import { LOGIN } from "../../api";
@@ -63,6 +63,8 @@ const Login = () => {
                 <button disabled={loading}>Entrar</button>
                 {erro && <small className={estilos.erro}>{erro}</small>}
             </form>
+
+            <Link to="/" className={estilos.Link}>Voltar para home</Link>
         </section>
     );
 };

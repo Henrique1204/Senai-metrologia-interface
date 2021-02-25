@@ -14,6 +14,13 @@
     outline: none;
 }
 
+.logout {
+    font-weight: bold;
+    color: #164673;
+    background-color: #f4f4f4;
+    transition: transform 0.3s;
+}
+
 .nav a + a, .logout {
     margin-left: 1rem;
 }
@@ -22,11 +29,14 @@
 .nav a:hover,
 .nav a:focus,
 .nav .ativo,
-.navMobileAtivo .ativo,
-.logout:hover,
-.logout:focus {
+.navMobileAtivo .ativo
+{
     background-color: rgb(244,244,244,0.5);
 }
+
+.logout:focus, .logout:hover {
+    transform: scale(1.1);
+} 
 
 .mobileButton {
     padding: 1.5rem;
