@@ -80,7 +80,7 @@ const Grafico = ({ dados, sensor }) => {
             </div>
 
             <div className={`${estilos.umidade} ${estilos.card}`}>
-            {graficoUmi && <ChartBar dados={graficoUmi.dados} cor={graficoUmi.cores} yAxes={yAxesUmi} />}
+                {graficoUmi && <ChartBar dados={graficoUmi.dados} cor={graficoUmi.cores} yAxes={yAxesUmi} />}
             </div>
 
             <div>

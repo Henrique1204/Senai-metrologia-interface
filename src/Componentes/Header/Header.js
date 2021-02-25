@@ -17,7 +17,7 @@ const Header = () => {
 
     React.useEffect(() =>{
         if(pathname === "/") {
-            setTitulo("Daashboard");
+            setTitulo("Dashboard");
         } else {
             // Forma a url para definir o nome do sensor.
             setTitulo(pathname.replace("/", "").replace("sensor", "Sensor "));

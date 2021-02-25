@@ -24,4 +24,24 @@ export const selecionarSensores = ({ dashboard }) => {
     }
 }
 
+export const selecionarDadosGraficos = (state) => {
+    const sensores = selecionarSensores(state);
+
+    return sensores.map((sensor) => {
+        const hoje = new Date().getDate();
+
+        const dadosSensor =  state.dashboard.dados.filter((dado) => dado.nome_sensor === sensor);
+
+        const dadosHoje = dadosSensor.filter((dado)=> {
+            const dadoData = Number(dado.data.substring(0, 2));
+        
+            if (dadoData === hoje) return true;
+            return false;
+        });
+
+        return dadosHoje;
+    });
+}
+
+
 export default slice.reducer;
