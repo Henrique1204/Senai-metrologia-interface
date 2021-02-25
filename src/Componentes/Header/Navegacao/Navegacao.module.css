@@ -116,9 +116,5 @@
 }
 
 .navMobile .logout {
-    width: 100%;
-    border-radius: 0;
-    margin: 0;
-    font-weight: bold;
-    background-color: #164673;
+    margin:1rem 0;
 }
