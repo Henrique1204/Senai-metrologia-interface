@@ -7,7 +7,7 @@ const TabelaEmails = ({ carregar, remover }) => {
 
     if (dados) {
         return (
-            <table className={`${estilos.Tabela} animarEntrada`}>
+            <table className={`${estilos.Tabela} tabela animarEntrada`}>
                 <thead>
                     <tr>
                         <th>Nome</th>

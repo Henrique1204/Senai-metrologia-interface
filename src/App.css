@@ -110,3 +110,20 @@ input:hover, input:focus {
     background-color: #FFF;
     outline: none;
 }
+
+.tabela {
+    width: 100%;
+    text-align: left;
+}
+
+.tabela thead tr {
+    box-shadow: 0 2px 0 0 rgba(0, 0, 23, 1);
+}
+
+.tabela tr {
+    box-shadow: 0 1px 0 0 rgba(0, 0, 23, 0.3);
+}
+
+.tabela td, .Tabela th {
+    padding: 0.75rem 0;
+}

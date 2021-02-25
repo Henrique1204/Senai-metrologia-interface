@@ -41,19 +41,29 @@ const Amplitude = () => {
 
     return (
         <div className={estilos.containerAmplitude}>
-            <div className={estilos.titulo}>Amplitude</div>
+            <h2 className={estilos.titulo}>Amplitude</h2>
         
-            <ul className={estilos.listaDados}>
-                {
-                    amplitudes && amplitudes.map((amp, i) => (
-                        <li key={i} >
-                            <span className={estilos.data}>{amp.data}:</span>
-                            <span className={estilos.maxima}>Max - {amp.maxima} °C</span>
-                            <span>Min - {amp.minima} ºC</span>
-                        </li>
-                    ))
-                }
-            </ul>
+            <table className={`${estilos.tableAmplitude} tabela`}>
+                <thead>
+                    <tr>
+                        <th>data</th>
+                        <th>max</th>
+                        <th>min</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        amplitudes && amplitudes.map((amp, i) => (
+                            <tr key={i} >
+                                <td>{amp.data}</td>
+                                <td>{amp.maxima} °C</td>
+                                <td>{amp.minima} ºC</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };
