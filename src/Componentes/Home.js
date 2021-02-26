@@ -13,6 +13,20 @@ import { useSelector } from "react-redux";
 const Home = () => {
     const { dados, loading, erro } = useSelector((state) => state.dashboard);
 
+    React.useEffect(() => {
+        const intervalo = setInterval(() => {
+            const minutos = new Date().getMinutes();
+
+            if (minutos === 1 || minutos === 16 || minutos === 31 || minutos === 46) {
+                document.location.reload(true);
+            }
+        }, 60 * 1000);
+
+        return () => {
+            clearInterval(intervalo);
+        };
+    }, []);
+
     if (loading) {
         return (
             <section className="container">
