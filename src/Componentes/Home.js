@@ -47,8 +47,8 @@ const Home = () => {
         return (
             <main>
                 <Head
-                     title="Home"
-                     description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
+                    title="Home"
+                    description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
                 />
 
                 <TemperaturaAtual />

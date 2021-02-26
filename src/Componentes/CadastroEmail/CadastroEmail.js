@@ -9,6 +9,7 @@ import { GET_EMAILS, POST_EMAILS, PUT_EMAILS, DELETE_EMAILS } from "../../api.js
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmails, atualizarEmails } from "../../store/emails.js";
+import Head from "../Head";
 
 const initialState = {
     user: {
@@ -95,6 +96,11 @@ const CadastroEmail = () => {
 
     return (
         <section className={`${estilos.sessao} animarEntrada`}>
+                <Head
+                    title="Cadastro e-mails"
+                    description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
+                />
+
             <div className={estilos.card}>
                 <FormCadastro
                     value={user}

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogin } from "../../store/login.js";
 import { LOGIN } from "../../api";
+import Head from "../Head";
 
 const Login = () => {
     const usuario = useForm();
@@ -31,6 +32,11 @@ const Login = () => {
 
     return (
         <section className={`${estilos.sessao} animarEntrada`}>
+                <Head
+                    title="Login"
+                    description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
+                />
+
             <h1>Login</h1>
 
             <form onSubmit={handleSubmit}>
