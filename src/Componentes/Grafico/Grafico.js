@@ -84,7 +84,7 @@ const Grafico = ({ dados, sensor }) => {
             </div>
 
             <div>
-                <Amplitude />
+                <Amplitude sensor={sensor} />
 
                 <Link to={`sensor${sensor}`} className={estilos.link} >Ver Histórico</Link>
             </div>

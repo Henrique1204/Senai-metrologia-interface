@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 // import do css como módulo
 import estilos from "./Amplitude.module.css";
 
-const Amplitude = () => {
+const Amplitude = ({ sensor }) => {
     const [amplitudes, setAmplitudes] = React.useState([]);
     const { dados } = useSelector((state) => state.dashboard);
 
     React.useEffect(() => {
         // Separa os valores únicos de data.
-        const datas = dados.reduce((ant, { data }) => {
+        const datas = dados.filter(({ nome_sensor }) => nome_sensor === sensor)
+        .reduce((ant, { data }) => {
             const inclui = ant.includes(data);
 
             if (!inclui) {
@@ -26,7 +27,9 @@ const Amplitude = () => {
             const temperaturas = dados.filter((dado) => dado.data === data)
             .map(({ temperatura }) => temperatura);
 
-            if (temperaturas.length >= 60) {
+            const dataHoje = new Date().getDate();
+
+            if (Number(data.substring(0, 2)) !== dataHoje) {
                 setAmplitudes((amp) => [
                     ...amp,
                     {
@@ -37,7 +40,7 @@ const Amplitude = () => {
                 ]);
             }
         });
-    }, [dados]);
+    }, [dados, sensor]);
 
     return (
         <div className={estilos.containerAmplitude}>

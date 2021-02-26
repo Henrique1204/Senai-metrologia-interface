@@ -67,7 +67,9 @@ const CadastroEmail = () => {
             setErroForm(null);
             await dispatch(atualizarEmails(config));
 
-            setModal(true);
+            if (!user?.id) {
+                setModal(true);
+            }
 
             limpar();
             await dispatch(getEmails(GET_EMAILS(token)));
