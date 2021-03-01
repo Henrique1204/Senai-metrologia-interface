@@ -33,7 +33,7 @@ export const selecionarDadosGraficos = (state) => {
         const dadosSensor =  state.dashboard.dados.filter((dado) => dado.nome_sensor === sensor);
 
         const dadosHoje = dadosSensor.filter((dado)=> {
-            const dadoData = Number(dado.data.substring(0, 2));
+            const dadoData = Number(dado.data.split("/")[0]);
         
             if (dadoData === hoje) return true;
             return false;

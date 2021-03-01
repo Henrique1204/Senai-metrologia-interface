@@ -29,7 +29,7 @@ const Amplitude = ({ sensor }) => {
 
             const dataHoje = new Date().getDate();
 
-            if (Number(data.substring(0, 2)) !== dataHoje) {
+            if (Number(data.split("/")[0]) !== dataHoje) {
                 setAmplitudes((amp) => [
                     ...amp,
                     {
