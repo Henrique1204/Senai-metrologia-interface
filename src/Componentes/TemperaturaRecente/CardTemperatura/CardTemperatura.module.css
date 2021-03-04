@@ -12,25 +12,7 @@
     grid-template-columns: auto auto;
     gap: 1rem;
     align-items: center;
-}
-
-.desativado {
-    opacity: 0.8;
     position: relative;
-}
-
-.desativado::before {
-    content: "Antigo";
-    padding: 0.25rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: #F4F4F4;
-    background-color: #222;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    display: block;
-    position: absolute;
-    top: -0.5rem;
-    left: -0.5rem;
 }
 
 .verde {
@@ -77,6 +59,17 @@
         #F2554A 73.83%,
         rgba(243, 61, 48, 0) 95.97%
     );
+}
+
+.data {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #F4F4F4;
+    background-color: #222;
+    position: absolute;
+    top: -0.5rem;
+    right: 10px;
 }
 
 .nome {

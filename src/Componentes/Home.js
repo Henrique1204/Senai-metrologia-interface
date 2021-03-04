@@ -3,8 +3,8 @@ import React from "react";
 import Erro from "./Feedback/Erro/Erro";
 // Importando componente de Loading.
 import Loading from "./Feedback/Loading/Loading";
-// import do componente TemperaturaAtual.
-import TemperaturaAtual from "./TemperaturaAtual/TemperaturaAtual.js";
+// import do componente TemperaturaRecente.
+import TemperaturaRecente from "./TemperaturaRecente/TemperaturaRecente.js";
 // Import do componente SLide.
 import Slide from "./Slide/Slide/Slide";
 import Head from "./Head";
@@ -51,7 +51,7 @@ const Home = () => {
                     description="Aplicação desenvolvida para turma de metrologia do SENAI Suiço-Brasileira"
                 />
 
-                <TemperaturaAtual />
+                <TemperaturaRecente />
     
                 <Slide />
             </main>

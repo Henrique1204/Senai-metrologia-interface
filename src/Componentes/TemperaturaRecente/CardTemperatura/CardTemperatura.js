@@ -22,6 +22,7 @@ const CardTemperatura = ({ dados }) => {
     if (dados) {
         return (
             <div className={`${estilos.card} ${estilos[corAviso]}`}>
+                <span className={estilos.data}>{dados.hora} - {dados.data}</span>
                 <p className={estilos.nome} >Sensor {dados.nome_sensor}</p>
                 <span className={estilos.temperatura} >
                     T • {dados.temperatura.toString().replace(".", ",")} º C
